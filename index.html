@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>NHR</title>
+         <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+       <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+       <script src="./assets/js/utility.js"></script>
+    </head>
+    <body>
+    <div class="body-container">
+        <div class="homepage" style="display:none" >
+            <div class="homepage-logo">
+                <img class="logo" src="../assets/images/logo.png"/>
+            </div>
+            <div class="sign-up-email">
+                <input class="button white" type="button" value="Sign Up with Email" onclick="togglepage('homepage','signup')"/>
+            </div   >
+            <div class="log-in">
+                <div class="white-text">
+                    <span>Have an account?</span>
+                </div>
+                <input class="button highlight" type="button" value="Log In"/>
+            </div>
+            <div class="disclamer">
+                <div class="white-text">
+                    <span>By proceeding you agree to our</span>
+                    <span><strong>Terms of User</strong> and <strong>Privacy Policy</strong></span>
+                </div>
+            </div>
+        </div>
+        <div class="signup" style="display:none">
+         <div class="signup-logo">
+                <img class="logo" src="../assets/images/logo.png"/>
+            </div>
+            <div class="sign-up-form">
+                <input class="input-text" type="text" placeholder="First Name"/>
+                <input class="input-text" type="text" placeholder="Last Name"/>
+                <input class="input-text" type="email" placeholder="Your Email"/>
+                <input class="input-text" type="password" placeholder="Password"/>
+            </div>
+            <div class="client">
+                <input class="button highlight" type="button" value="Client"/>
+            </div>
+            <div class="candidate">
+                <input class="button highlight" type="button" value="Candidate"/>
+            </div>
+            <div class="sign-up">
+                <input class="button disabled" type="button" value="Sign Up" onclick="togglepage('signup','occupation')"/>
+            </div>
+            </div>
+        <div class="pages occupation"  style="display:none">
+            <div class="header">What is it you do?</div>
+            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="scatter-button">
+                <div >
+                    <input class="button hollow" type="button" value="Administrator" onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Junior Doctor"onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Brain Surgeon" onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Health Nurse" onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Midwife" onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Physiotherapist" onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Dietician" onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Osetopath" onclick="togglepage('occupation','industry')"/>
+                    <input class="button hollow" type="button" value="Radiographer" onclick="togglepage('occupation','industry')"/>
+                </div>
+            </div>
+              <!--<div class="see-more">See More</div>-->
+        </div>
+        <div class="pages industry" >
+        <div class="header">In what industry primarily</div>
+            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="scatter-button">
+                <div >
+                    <input class="button hollow" type="button" value="Wellbeing"/>
+                    <input class="button hollow" type="button" value="Nutrition"/>
+                    <input class="button hollow" type="button" value="Midwifery"/>
+                    <input class="button hollow" type="button" value="Surgery"/>
+                    <input class="button hollow" type="button" value="Dental"/>
+                    <input class="button hollow" type="button" value="Physcology"/>
+                    <input class="button hollow" type="button" value="Administration"/>
+                    <input class="button hollow" type="button" value="Social Care"/>
+                    <input class="button hollow" type="button" value="Radiography"/>
+                </div>
+            </div>
+              <!--<div class="see-more">See More</div>-->
+            <div class="search-more">
+                <input class="input-text" type="text" placeholder="Search department..."/><span class="glyphicon glyphicon-search"></span>
+            </div>
+
+        </div>
+    </div>
+    </body>
+</html>
