@@ -5,8 +5,8 @@
         "role":"candidate",
         "email":"abir.caesar@gmail.com",
         "password":"abir",
-        "occupation":[],
-        "industry":[]
+        "occupation":["Administrator",  "Dietician"],
+        "industry":["Administration", "Dental", "Midwifery"]
     }
 
 ]

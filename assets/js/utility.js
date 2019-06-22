@@ -7,6 +7,7 @@ var statter_element_occupation =[];
 var statter_element_industry =[];
 var jsonUser = [];
 
+
 $( document ).ready(function() {
     $('.roles').click(function(){
         $('.check').hide();
@@ -28,27 +29,12 @@ $( document ).ready(function() {
           }
         }
      });
-    $.each(jsonUser,function(idx,obj){
-        if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()  )  {
-           statter_element_occupation = obj['occupation'] ;
-           statter_element_industry = obj['industry'] ;
-
-           $.each(statter_element_occupation,function(occidx,occobj){
-            $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
-                if($(obj1).val() == occobj){
-                    $(obj1).addClass('hollow-clicked')
-                }
-            })
-           })
-           $.each(statter_element_industry,function(indidx,indobj){
-            $.each($('.scatter-button.industry').find('input'),function(idx1,obj1){
-                if($(obj1).val() == indobj){
-                    $(obj1).addClass('hollow-clicked')
-                }
-            })
-           })
-        }
-      })
+     $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
+        $(obj1).removeClass('hollow-clicked')
+     })
+     $.each($('.scatter-button.industry').find('input'),function(idx1,obj1){
+        $(obj1).removeClass('hollow-clicked')
+     });
 
     $('.scatter-button.occupation').click(function(e){
        var statter_elementidx = statter_element_occupation.indexOf(e.target.value)
@@ -73,10 +59,40 @@ $( document ).ready(function() {
          }
      })
   });
-function checkLogin(){
+function setAttributes(email,password){
+    $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
+        $(obj1).removeClass('hollow-clicked')
+     })
+     $.each($('.scatter-button.industry').find('input'),function(idx1,obj1){
+        $(obj1).removeClass('hollow-clicked')
+     });
+    $.each(jsonUser,function(idx,obj){
+        if(obj['email'] ==email && obj['password'] == password  )  {
+           statter_element_occupation = obj['occupation'] ;
+           statter_element_industry = obj['industry'] ;
+
+           $.each(statter_element_occupation,function(occidx,occobj){
+            $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
+                if($(obj1).val() == occobj){
+                    $(obj1).addClass('hollow-clicked')
+                }
+            })
+           })
+           $.each(statter_element_industry,function(indidx,indobj){
+            $.each($('.scatter-button.industry').find('input'),function(idx1,obj1){
+                if($(obj1).val() == indobj){
+                    $(obj1).addClass('hollow-clicked')
+                }
+            })
+           })
+        }
+      })
+}
+  function checkLogin(){
     $.each(jsonUser,function(idx,obj){
         if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()  )  {
-          togglepage('login','occupation');
+            setAttributes($('#log-email').val(), $('#log-password').val());
+            togglepage('login','occupation');
         }
       })
 }
@@ -105,15 +121,22 @@ function addUser(){
                 "industry":[]
             }
         )
-        togglepage('signup','occupation');
+        statter_element_occupation =[];
+        statter_element_industry =[];
+        setAttributes($('#sign-email').val() ,$('#sign-password').val() );
+        $('#log-email').val($('#sign-email').val())
+        $('#log-email').val('');
+        togglepage('signup','login');
       }
       else{
+        $('#log-email').val($('#sign-email').val())
+        $('#log-email').val('');
         togglepage('signup','login');
       }
 }
 function updateUser(){
     $.each(jsonUser,function(idx,obj){
-        if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val() || obj['email'] == $('#sign-email').val() && obj['password'] == $('#sign-password').val()   )  {
+        if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()    )  {
           obj['occupation'] = statter_element_occupation;
           obj['industry'] = statter_element_industry;
         }
