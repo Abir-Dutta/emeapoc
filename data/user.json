@@ -2,6 +2,7 @@
     {
         "userfirstName":"Abir",
         "userlastName":"Dutta",
+        "role":"candidate",
         "email":"abir.caesar@gmail.com",
         "password":"abir",
         "occupation":[],
