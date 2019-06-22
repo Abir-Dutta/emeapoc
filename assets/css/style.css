@@ -99,8 +99,12 @@ html,body{
     padding: 10% 20%;
 }
 
-.body-container .signup .signup-logo{
+.body-container .signup .signup-logo
+{
     padding: 10% 0% 5% 0%;
+}
+.body-container .login .login-logo{
+    padding: 20% 0% 5% 0%;
 }
 .body-container .signup .client{
     margin: 8% 10% 3% 10%;
@@ -110,11 +114,13 @@ html,body{
     margin: 0% 10% 0% 10%;
 
 }
-.body-container .signup .sign-up-form{
+.body-container .signup .sign-up-form,
+.body-container .login .login-form{
     margin: 2% 10%;
 }
-.body-container .signup .sign-up{
-    padding: 20% 10% 5% 10%;
+.body-container .signup .sign-up,
+.body-container .login .log-in{
+    padding: 12% 10% 5% 10%;
 
 }
 .body-container .pages .header{
@@ -155,8 +161,20 @@ html,body{
     padding: 5% 5% 0% 80%;
 }
 .navigation{
-    padding: 25% 20% 0% 10%;
+    padding: 5% 20% 10% 10%;
     display: flex;
+    position: relative;
+    width: 100%;
+}
+.right-nav{
+    position: absolute;
+    right: 10%;
+    bottom: 20%;
+}
+.left-nav{
+    position: absolute;
+    left: 10%;
+    bottom: 20%;
 }
 .check{
     font-size: 60px;
