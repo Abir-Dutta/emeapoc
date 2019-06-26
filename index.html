@@ -7,10 +7,12 @@
     <script src="./assets/js/bootstrap.min.js"></script>
        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
        <script src="./assets/js/utility.js"></script>
+       <script src="./assets/js/data.js"></script>
+       <script src="./assets/js/lodash.core.min.js"></script>
     </head>
     <body>
     <div class="body-container">
-        <div class="homepage">
+        <div class="homepage" >
             <div class="homepage-logo">
                 <img class="logo" src="./assets/images/logo.png"/>
             </div>
@@ -75,21 +77,14 @@
             </div>
         </div>
         <div class="pages occupation"  style="display:none">
-         <div class="skip" ><span onclick="togglepage('occupation','industry')">Skip ></span>
-        </div>
+            <div class="skip">
+                <span onclick="togglepage('occupation','area')">Skip ></span>
+            </div>
             <div class="header">What is it you do?</div>
             <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
             <div class="scatter-button occupation">
                 <div class="occupation">
-                    <input class="button hollow" type="button" value="Administrator" />
-                    <input class="button hollow" type="button" value="Junior Doctor"/>
-                    <input class="button hollow" type="button" value="Brain Surgeon" />
-                    <input class="button hollow" type="button" value="Health Nurse" />
-                    <input class="button hollow" type="button" value="Midwife" />
-                    <input class="button hollow" type="button" value="Physiotherapist" />
-                    <input class="button hollow" type="button" value="Dietician" />
-                    <input class="button hollow" type="button" value="Osetopath" />
-                    <input class="button hollow" type="button" value="Radiographer" />
+
                 </div>
             </div>
               <!--<div class="see-more">See More</div>-->
@@ -101,45 +96,192 @@
             </div>
             <div class="navigation">
                 <!--<div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('industry','occupation')"></span>
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('area','occupation')"></span>
                 </div>-->
                 <div class="right-nav ">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('occupation','industry')"></span>
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('occupation','area')"></span>
                 </div>
             </div>
         </div>
-        <div class="pages industry" style="display:none">
-         <div class="skip" ><span onclick="updateUser();togglepage('industry','homepage')">Skip ></span>
-        </div>
-        <div class="header">In what industry primarily</div>
+        <div class="pages area" style="display:none">
+            <div class="skip">
+                <span onclick="togglepage('area','qualification')">Skip ></span>
+            </div>
+            <div class="header">In what area primarily</div>
             <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
-            <div class="scatter-button industry">
-                <div class="">
-                    <input class="button hollow" type="button" value="Wellbeing"/>
-                    <input class="button hollow" type="button" value="Nutrition"/>
-                    <input class="button hollow" type="button" value="Midwifery"/>
-                    <input class="button hollow" type="button" value="Surgery"/>
-                    <input class="button hollow" type="button" value="Dental"/>
-                    <input class="button hollow" type="button" value="Physcology"/>
-                    <input class="button hollow" type="button" value="Administration"/>
-                    <input class="button hollow" type="button" value="Social Care"/>
-                    <input class="button hollow" type="button" value="Radiography"/>
+            <div class="scatter-button area">
+                <div class="area">
+
                 </div>
             </div>
               <!--<div class="see-more">See More</div>-->
             <div class="search-more ">
-                <input class="input-text padR15cent" type="text" placeholder="Search industry..."/>
+                <input class="input-text padR15cent" type="text" placeholder="Search area..."/>
                 <div class="search-icon">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </div>
             </div>
             <div class="footer navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick="togglepage('industry','occupation')"></span>
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick="togglepage('area','occupation')"></span>
                 </div>
                 <div class="right-nav">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('industry','homepage')"></span>
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('area','qualification')"></span>
                 </div>
+            </div>
+        </div>
+        <div class="pages qualification"  style="display:none">
+            <div class="skip">
+                <span onclick="togglepage('qualification','experience')">Skip ></span>
+            </div>
+            <div class="header">Your professional qualifications?</div>
+            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="scatter-button qualification">
+                <div class="qualification">
+
+                </div>
+            </div>
+              <!--<div class="see-more">See More</div>-->
+              <div class="search-more ">
+                <input class="input-text padR15cent" type="text" placeholder="Search qualification..."/>
+                <div class="search-icon">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="navigation">
+                <div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('qualification','area')"></span>
+                </div>
+                <div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('qualification','experience')"></span>
+                </div>
+            </div>
+        </div>
+        <div class="pages experience"  style="display:none">
+            <div class="skip">
+                <span onclick="togglepage('experience','personalAttribute')">Skip ></span>
+            </div>
+            <div class="header">And your experience?</div>
+            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="scatter-button experience">
+                <div class="experience">
+
+                </div>
+            </div>
+              <!--<div class="see-more">See More</div>-->
+              <div class="search-more ">
+                <input class="input-text padR15cent" type="text" placeholder="Search experience..."/>
+                <div class="search-icon">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="navigation">
+                <div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('experience','qualification')"></span>
+                </div>
+                <div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('experience','personalAttribute')"></span>
+                </div>
+            </div>
+        </div>
+        <div class="pages personalAttribute"  style="display:none">
+            <!--<div class="skip">
+                <span onclick="updateUser();togglepage('personalAttribute','homepage')">Skip ></span>
+            </div>-->
+            <div class="header">What are your personal attributes?</div>
+            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="scatter-button personalAttribute">
+                <div class="personalAttribute">
+
+                </div>
+            </div>
+              <!--<div class="see-more">See More</div>-->
+              <div class="search-more ">
+                <input class="input-text padR15cent" type="text" placeholder="Search attribute..."/>
+                <div class="search-icon">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </div>
+            </div>
+
+            <div class="createprofile" onclick="updateUser();togglepage('personalAttribute','about')">Create Profile</div>
+            <div class="navigation">
+                <div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('personalAttribute','experience')"></span>
+                </div>
+               <!--<div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('personalAttribute','about')"></span>
+                </div> -->
+            </div>
+        </div>
+        <div class="pages about"  style="display:none">
+            <!--<div class="skip">
+                <span onclick="updateUser();togglepage('personalAttribute','homepage')">Skip ></span>
+            </div>-->
+            <div class="header">Tell me about yourself</div>
+            
+              <!--<div class="see-more">See More</div>-->
+
+            <div class="user-logo padT10percent">
+                 <span class=" user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
+            </div>
+            <div class="label-header">Add photo and/ or video</div> 
+
+            <div class="label-header padT10percent">Add your bio</div> 
+            <div class="add-button-glyph">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            </div>
+
+            <div class="label-header padT5percent">Add your linkedIn</div> 
+            <div  class="add-button-glyph">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            </div>
+            <div class="hobbies-input padT10percent">
+                <input class="input-text" type="text" placeholder="My hobbies outside of work includes ..." />
+            </div>
+            <div class="navigation">
+                <!--<div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('about','experience')"></span>
+                </div>-->
+               <div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();populateUserProfile();togglepage('about','profile');"></span>
+                </div> 
+            </div>
+        </div>
+        <div class="pages profile" style="display:none" >
+            <!--<div class="skip">
+                <span onclick="updateUser();togglepage('personalAttribute','homepage')">Skip ></span>
+            </div>-->
+            <div class="header">This is you!</div>
+            
+              <!--<div class="see-more">See More</div>-->
+
+            <div class="user-logo padT5percent">
+                 <span class=" user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
+            </div>
+            <div class="sub-header padT5percent">You are a</div>
+            <div class="label-header occupation"></div> 
+            <div class="sub-header padT5percent">specialising in</div> 
+            <div class="label-header area"></div> 
+            <div class="sub-header padT5percent">with the following qualifications</div> 
+            <div class="label-header qualification"></div> 
+            <div class="sub-header padT5percent">you have the following experience</div> 
+            <div class="label-header experience"></div> 
+            <div class="sub-header padT5percent">and have following attributes</div> 
+            <div class="label-header personalAttribute"></div> 
+            <div class="activate-profile">
+                <input class="button" type="button" value="Tell the world" />
+            </div>
+            <div class="activate-profile">
+                <input class="button" type="button" value="Hide me for now" />
+            </div>
+
+            <div class="navigation">
+                <!--<div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('personalAttribute','experience')"></span>
+                </div>-->
+               <div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('personalAttribute','homepage')"></span>
+                </div> 
             </div>
         </div>
     </div>

@@ -136,6 +136,12 @@ html,body{
     text-align: center;
     color:#8dacf5;
 }
+.body-container .pages .label-header{
+    margin: 5% 10% 5% 10%;
+    font-size:40px;
+    text-align: center;
+    color:#8dacf5;
+}
 .body-container .pages .scatter-button{
     margin: 10% 10% 0% 10%;
     text-align: center;
@@ -146,6 +152,16 @@ html,body{
     text-align: center;
     color:#7e99f3;
     font-size:40px;
+}
+
+.body-container .pages .createprofile{
+    margin: 20% 10% 0% 10%;
+    text-align: center;
+    color:#7e99f3;
+    font-size:40px;
+    text-decoration: underline;
+    font-weight: bold;
+    text-underline-position: under;
 }
 
 .body-container .pages .search-more{
@@ -186,4 +202,28 @@ html,body{
     position: relative;
     left: 85%;
     top: -90px;
+}
+.padT5percent{
+    padding-top: 5%;
+}
+.padT10percent{
+    padding-top: 10%;
+}
+.user-logo{
+    text-align: center;
+    font-size: 280px;
+}
+.user-logo .user-logo-border{
+    border: 5px solid;
+    height: 315px;
+}
+.add-button-glyph{
+    text-align: center;
+    font-size: 60px;
+}
+.hobbies-input{
+    margin: 2% 10%;
+}
+.body-container .profile .activate-profile{
+    margin: 12% 10%;
 }
