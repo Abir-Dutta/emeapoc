@@ -80,7 +80,8 @@
             <div class="skip">
                 <span onclick="togglepage('occupation','area')">Skip ></span>
             </div>
-            <div class="header">What is it you do?</div>
+            <div class="header for-candidate">What is it you do?</div>
+            <div class="header for-client">What is it you're looking for?</div>
             <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
             <div class="scatter-button occupation">
                 <div class="occupation">
@@ -107,7 +108,9 @@
             <div class="skip">
                 <span onclick="togglepage('area','qualification')">Skip ></span>
             </div>
-            <div class="header">In what area primarily</div>
+            <div class="header for-candidate">In what area primarily</div>
+            <div class="header for-client">In which area are you hiring for?</div>
+
             <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
             <div class="scatter-button area">
                 <div class="area">
@@ -134,7 +137,9 @@
             <div class="skip">
                 <span onclick="togglepage('qualification','experience')">Skip ></span>
             </div>
-            <div class="header">Your professional qualifications?</div>
+            <div class="header for-candidate">Your professional qualifications?</div>
+            <div class="header for-client">which qualifications do you require?</div>
+
             <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
             <div class="scatter-button qualification">
                 <div class="qualification">
@@ -161,7 +166,8 @@
             <div class="skip">
                 <span onclick="togglepage('experience','personalAttribute')">Skip ></span>
             </div>
-            <div class="header">And your experience?</div>
+            <div class="header for-candidate">And your experience?</div>
+            <div class="header for-client">What experience are you looking for?</div>
             <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
             <div class="scatter-button experience">
                 <div class="experience">
@@ -188,7 +194,8 @@
             <!--<div class="skip">
                 <span onclick="updateUser();togglepage('personalAttribute','homepage')">Skip ></span>
             </div>-->
-            <div class="header">What are your personal attributes?</div>
+            <div class="header for-candidate">What are your personal attributes?</div>
+            <div class="header for-client">Which personal attributes are you looking for?</div>
             <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
             <div class="scatter-button personalAttribute">
                 <div class="personalAttribute">
@@ -203,7 +210,8 @@
                 </div>
             </div>
 
-            <div class="createprofile" onclick="updateUser();togglepage('personalAttribute','about')">Create Profile</div>
+            <div class="createprofile for-candidate" onclick="updateUser();togglepage('personalAttribute','about')">Create Profile</div>
+            <div class="createprofile for-client" onclick="updateUser();togglepage('personalAttribute','resultSet')">View Profiles</div>
             <div class="navigation">
                 <div class="left-nav">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('personalAttribute','experience')"></span>
@@ -269,10 +277,10 @@
             <div class="sub-header padT5percent">and have following attributes</div> 
             <div class="label-header personalAttribute"></div> 
             <div class="activate-profile">
-                <input class="button" type="button" value="Tell the world" />
+                <input class="button" type="button" value="Tell the world" onclick="disableEnableProfile(true)"/>
             </div>
             <div class="activate-profile">
-                <input class="button" type="button" value="Hide me for now" />
+                <input class="button" type="button" value="Hide me for now" onclick="disableEnableProfile(false)"/>
             </div>
 
             <div class="navigation">
@@ -284,6 +292,96 @@
                 </div> 
             </div>
         </div>
+        <div class="pages resultSet" style="display:none">
+            <!--<div class="skip">
+                <span onclick="updateUser();togglepage('personalAttribute','homepage')">Skip ></span>
+            </div>-->
+            <div class="header padT20percent">We've found</div>
+            
+              <!--<div class="see-more">See More</div>-->
+
+            <div class="search-result padT10percent">
+                <input disabled class="search-result-button button" type="button" value="0" />
+            </div>
+            <div class="header padT5percent">Potential Candidates!</div>
+            
+             <div class="view-candidate">
+                <input class="button" type="button" value="View Candidates" />
+            </div>
+            <div class="navigation">
+                <!--<div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('about','experience')"></span>
+                </div>-->
+               <div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('resultSet','searchResult');"></span>
+                </div> 
+            </div>
+        </div>
+        <div class="pages searchResult"  style="display:none">
+            <!--<div class="skip">
+                <span onclick="updateUser();togglepage('personalAttribute','homepage')">Skip ></span>
+            </div>-->
+            <div class="header">Here are your top 5 matches</div>
+
+
+            <div class="search-list">
+                <div class="search-profile-info">
+                    <div class="search-result-user-logo padT5percent">
+                        <span class="search-result-user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
+                    </div>
+                    <div class="search-name-button">
+                        <div class="label-header"> Abir Dutta </div>
+                        <div class="candidate-result">
+                            <input class="button" type="button" value="View Profile" />
+                        </div>
+                    </div>
+                    <div class="match-percent padT8percent">
+                        <button disabled class="match-percent-button button">0% </br>Match </button>
+                    </div>
+                </div>
+                <div class="search-profile-info">
+                    <div class="search-result-user-logo padT5percent">
+                        <span class="search-result-user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
+                    </div>
+                    <div class="search-name-button">
+                        <div class="label-header"> Abir Dutta </div>
+                        <div class="candidate-result">
+                            <input class="button" type="button" value="View Profile" />
+                        </div>
+                    </div>
+                    <div class="match-percent padT8percent">
+                        <button disabled class="match-percent-button button">99% </br>Match </button>
+                    </div>
+                </div>
+                    <div class="search-profile-info">
+                    <div class="search-result-user-logo padT5percent">
+                        <span class="search-result-user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
+                    </div>
+                    <div class="search-name-button">
+                        <div class="label-header"> Abir Dutta </div>
+                        <div class="candidate-result">
+                            <input class="button" type="button" value="View Profile" />
+                        </div>
+                    </div>
+                    <div class="match-percent padT8percent">
+                        <button disabled class="match-percent-button button">100% </br>Match </button>
+                    </div>
+                </div>
+            </div>
+             
+            <div class="candidate-result padT10percent">
+                <input class="button" type="button" value="Show next 5 results" />
+            </div>
+            <div class="navigation">
+                <div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('searchResult','resultSet')"></span>
+                </div>
+               <!--<div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();populateUserProfile();togglepage('about','profile');"></span>
+                </div> -->
+            </div>
+        </div>
+        
     </div>
     </body>
 </html>

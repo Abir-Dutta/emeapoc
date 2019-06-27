@@ -10,6 +10,7 @@ var statter_element_experience =[];
 var statter_element_personalAttribute =[];
 
 var jsonUser = [];
+var loggedInUser = {}
 var allAttributes = {}
 var allKeys = []
 function intialStorage(){
@@ -56,6 +57,10 @@ $( document ).ready(function() {
     })
     _.each($('.scatter-button').find('input'),function(obj){
         $(obj).removeClass('hollow-clicked')
+    })
+
+    _.each($('.for-client,.for-candidate'),function(obj){
+        $(obj).hide();
     })
     //  $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
     //     $(obj1).removeClass('hollow-clicked')
@@ -120,7 +125,7 @@ $( document ).ready(function() {
          }
      });
   });
-function setAttributes(email,password){
+function setAttributes(loggedinuser){
     // $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
     //     $(obj1).removeClass('hollow-clicked')
     //  })
@@ -130,16 +135,16 @@ function setAttributes(email,password){
      $.each($('.scatter-button').find('input'),function(idx1,obj1){
         $(obj1).removeClass('hollow-clicked')
      });
+     _.each($('.for-'+loggedinuser.role),function(obj){
+        $(obj).show()
+    })
+           statter_element_occupation = loggedinuser['occupation'] ;
+           statter_element_area = loggedinuser['area'] ;
+           statter_element_qualification = loggedinuser['qualification'] ;
+           statter_element_experience = loggedinuser['experience'] ;
+           statter_element_personalAttribute = loggedinuser['personalAttribute'] ;
 
-    $.each(jsonUser,function(idx,obj){
-        if(obj['email'] == email && obj['password'] == password  )  {
-
-           statter_element_occupation = obj['occupation'] ;
-           statter_element_area = obj['area'] ;
-           statter_element_qualification = obj['qualification'] ;
-           statter_element_experience = obj['experience'] ;
-           statter_element_personalAttribute = obj['personalAttribute'] ;
-
+           
            $.each(statter_element_occupation,function(occidx,occobj){
             $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
                 if($(obj1).val() == occobj){
@@ -175,13 +180,12 @@ function setAttributes(email,password){
                 }
             })
            })
-        }
-      })
 }
   function checkLogin(){
     $.each(jsonUser,function(idx,obj){
         if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()  )  {
-            setAttributes($('#log-email').val(), $('#log-password').val());
+            loggedInUser = obj;
+            setAttributes(loggedInUser);
             togglepage('login','occupation');
         }
       })
@@ -200,29 +204,30 @@ function addUser(){
                 role = $($(obj).siblings('input')).val();
               }
           })
-        jsonUser.push(
-            {
-                forename:$('#sign-fname').val(),
-                surname:$('#sign-lname').val(),
-                email:$('#sign-email').val(),
-                password:$('#sign-password').val(),
-                role:role,
-                disabled:false,
-                occupation:[],
-                area:[],
-                qualification:[],
-                experience:[],
-                personalAttribute:[],
-                bio:"",
-                linkedinURL:""
-            }
-        )
+          var newUser = {
+            forename:$('#sign-fname').val(),
+            surname:$('#sign-lname').val(),
+            email:$('#sign-email').val(),
+            password:$('#sign-password').val(),
+            role:role,
+            disabled:false,
+            occupation:[],
+            area:[],
+            qualification:[],
+            experience:[],
+            personalAttribute:[],
+            bio:"",
+            linkedinURL:""
+        }
+        jsonUser.push(newUser)
+        loggedInUser = newUser;
         statter_element_occupation =[];
         statter_element_area =[];
         statter_element_qualification =[];
         statter_element_experience =[];
         statter_element_personalAttribute =[];
-        setAttributes($('#sign-email').val() ,$('#sign-password').val() );
+        setAttributes(loggedInUser);
+        setStorage('users', jsonUser)
 
         togglepage('signup','login');
       }
@@ -232,17 +237,68 @@ function addUser(){
         togglepage('signup','login');
       }
 }
+function disableEnableProfile(disableEnable){
+    loggedInUser.disabled = !disableEnable;
+}
 function updateUser(){
-    $.each(jsonUser,function(idx,obj){
-        if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()    )  {
-          obj['occupation'] = statter_element_occupation;
-          obj['area'] = statter_element_area;
-          obj['qualification'] = statter_element_qualification;
-          obj['experience'] = statter_element_experience;
-          obj['personalAttribute'] = statter_element_personalAttribute;
+    // $.each(jsonUser,function(idx,obj){
+    //     if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()    )  {
+        loggedInUser['occupation'] = statter_element_occupation;
+        loggedInUser['area'] = statter_element_area;
+        loggedInUser['qualification'] = statter_element_qualification;
+        loggedInUser['experience'] = statter_element_experience;
+        loggedInUser['personalAttribute'] = statter_element_personalAttribute;
+        if(loggedInUser.role == 'client'){
+            searchCandidate(loggedInUser)
         }
-      })
+      //})
     setStorage('users', jsonUser)
+}
+function searchCandidate(loggedinuser){
+    var viableUserList = _.filter(jsonUser,function(obj){
+        obj['score'] = 0;
+        return obj.role == 'candidate' && obj.disabled == false;
+    })
+    _.each(loggedinuser.occupation,function(obj){
+        _.each(viableUserList,function(usr){
+            if(usr.occupation.indexOf(obj)>-1)
+            {
+                usr['score'] += 20;
+            }
+        })
+    })
+    _.each(loggedinuser.area,function(obj){
+        _.each(viableUserList,function(usr){
+            if(usr.area.indexOf(obj)>-1)
+            {
+                usr['score'] += 20;
+            }
+        })
+    })
+    _.each(loggedinuser.qualification,function(obj){
+        _.each(viableUserList,function(usr){
+            if(usr.qualification.indexOf(obj)>-1)
+            {
+                usr['score'] += 2.5;
+            }
+        })
+    })
+    _.each(loggedinuser.experience,function(obj){
+        _.each(viableUserList,function(usr){
+            if(usr.experience.indexOf(obj)>-1)
+            {
+                usr['score'] += 20;
+            }
+        })
+    })
+    _.each(loggedinuser.personalAttribute,function(obj){
+        _.each(viableUserList,function(usr){
+            if(usr.personalAttribute.indexOf(obj)>-1)
+            {
+                usr['score'] += 2;
+            }
+        })
+    })
 }
 function populateUserProfile(){
     _.each(jsonUser,function(obj){

@@ -209,6 +209,13 @@ html,body{
 .padT10percent{
     padding-top: 10%;
 }
+.padT20percent{
+    padding-top: 20%;
+}
+.padT8percent
+{
+    padding-top: 8%;
+}
 .user-logo{
     text-align: center;
     font-size: 280px;
@@ -226,4 +233,55 @@ html,body{
 }
 .body-container .profile .activate-profile{
     margin: 12% 10%;
+}
+.body-container .resultSet .view-candidate{
+    margin: 12% 10%;
+}
+.body-container .resultSet .search-result{
+    margin: 12% 35%;
+    
+}
+.body-container .resultSet .match-percent{
+    margin: 12% 35%;
+    
+}
+.search-result-button{
+    height: 14%;
+    width: 85%;
+    border-radius: 130px;
+}
+.match-percent-button{
+    height: 11%;
+    width: 190px;
+    border-radius: 130px;
+    background-color: #84a0db;
+}
+.body-container .searchResult .candidate-result{
+    margin: 2% 5% 0% 5%;
+    
+}
+.search-profile-info .search-name-button .label-header{
+    text-align: left;
+    padding-top: 10%;
+    font-size: 40px;
+}
+.search-profile-info .search-name-button .button{
+    height: 70px;
+    width: 350px;
+}
+.body-container .searchResult .search-profile-info
+{
+    display:flex;
+    margin: 5% 5%;
+}
+.search-result-user-logo{
+    text-align: center;
+    font-size: 190px;
+}
+.search-result-user-logo .search-result-user-logo-border{
+    border: 5px solid;
+    height: 215px;
+}
+.search-profile-info .search-name-button{
+    display:flex;flex-direction:column;width: 60%;
 }
