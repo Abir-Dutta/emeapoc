@@ -11,6 +11,7 @@ var statter_element_personalAttribute =[];
 
 var jsonUser = [];
 var loggedInUser = {}
+var isNewUser = false;
 var allAttributes = {}
 var allKeys = []
 
@@ -128,7 +129,7 @@ $( document ).ready(function() {
          }
      });
   });
-function setAttributes(loggedinuser,isNewUser){
+function setAttributes(loggedinuser){
      $.each($('.scatter-button').find('input'),function(idx1,obj1){
         $(obj1).removeClass('hollow-clicked')
      });
@@ -205,7 +206,10 @@ function addUser(){
         statter_element_qualification =[];
         statter_element_experience =[];
         statter_element_personalAttribute =[];
-        setAttributes(loggedInUser,true);
+
+    isNewUser =true;
+
+        setAttributes(loggedInUser);
         setStorage('users', jsonUser)
 
         togglepage('signup','login');
@@ -232,6 +236,8 @@ function updateUser(){
         }
       //})
     setStorage('users', jsonUser)
+    isNewUser =false;
+    setAttributes(loggedInUser)
 }
 function searchCandidate(loggedinuser){
     var viableUserList = _.filter(jsonUser,function(obj){
