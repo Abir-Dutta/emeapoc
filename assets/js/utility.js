@@ -13,6 +13,9 @@ var jsonUser = [];
 var loggedInUser = {}
 var allAttributes = {}
 var allKeys = []
+
+var searchCandidateList= [];
+
 function intialStorage(){
     if(getStorage("attributes") == null)
         localStorage.setItem("attributes", JSON.stringify(attributes));
@@ -125,60 +128,36 @@ $( document ).ready(function() {
          }
      });
   });
-function setAttributes(loggedinuser){
-    // $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
-    //     $(obj1).removeClass('hollow-clicked')
-    //  })
-    //  $.each($('.scatter-button.area').find('input'),function(idx1,obj1){
-    //     $(obj1).removeClass('hollow-clicked')
-    //  });
+function setAttributes(loggedinuser,isNewUser){
      $.each($('.scatter-button').find('input'),function(idx1,obj1){
         $(obj1).removeClass('hollow-clicked')
      });
      _.each($('.for-'+loggedinuser.role),function(obj){
         $(obj).show()
     })
+    if(isNewUser){
+        $('.for-'+loggedinuser.role+'.create').show();
+        $('.for-'+loggedinuser.role+'.update').hide();
+    }
+    else{
+        $('.for-'+loggedinuser.role+'.create').hide();
+        $('.for-'+loggedinuser.role+'.update').show();
+    }
+      
            statter_element_occupation = loggedinuser['occupation'] ;
            statter_element_area = loggedinuser['area'] ;
            statter_element_qualification = loggedinuser['qualification'] ;
            statter_element_experience = loggedinuser['experience'] ;
            statter_element_personalAttribute = loggedinuser['personalAttribute'] ;
 
-           
-           $.each(statter_element_occupation,function(occidx,occobj){
-            $.each($('.scatter-button.occupation').find('input'),function(idx1,obj1){
-                if($(obj1).val() == occobj){
-                    $(obj1).addClass('hollow-clicked')
-                }
-            })
-           })
-           $.each(statter_element_area,function(indidx,indobj){
-            $.each($('.scatter-button.area').find('input'),function(idx1,obj1){
-                if($(obj1).val() == indobj){
-                    $(obj1).addClass('hollow-clicked')
-                }
-            })
-           })
-           $.each(statter_element_qualification,function(occidx,occobj){
-            $.each($('.scatter-button.qualification').find('input'),function(idx1,obj1){
-                if($(obj1).val() == occobj){
-                    $(obj1).addClass('hollow-clicked')
-                }
-            })
-           })
-           $.each(statter_element_experience,function(indidx,indobj){
-            $.each($('.scatter-button.experience').find('input'),function(idx1,obj1){
-                if($(obj1).val() == indobj){
-                    $(obj1).addClass('hollow-clicked')
-                }
-            })
-           })
-           $.each(statter_element_personalAttribute,function(occidx,occobj){
-            $.each($('.scatter-button.personalAttribute').find('input'),function(idx1,obj1){
-                if($(obj1).val() == occobj){
-                    $(obj1).addClass('hollow-clicked')
-                }
-            })
+           _.each(allKeys,function(key){
+            $.each(loggedinuser[key],function(occidx,occobj){
+                $.each($('.scatter-button.'+key).find('input'),function(idx1,obj1){
+                    if($(obj1).val() == occobj){
+                        $(obj1).addClass('hollow-clicked')
+                    }
+                })
+               })
            })
 }
   function checkLogin(){
@@ -226,7 +205,7 @@ function addUser(){
         statter_element_qualification =[];
         statter_element_experience =[];
         statter_element_personalAttribute =[];
-        setAttributes(loggedInUser);
+        setAttributes(loggedInUser,true);
         setStorage('users', jsonUser)
 
         togglepage('signup','login');
@@ -259,52 +238,97 @@ function searchCandidate(loggedinuser){
         obj['score'] = 0;
         return obj.role == 'candidate' && obj.disabled == false;
     })
-    _.each(loggedinuser.occupation,function(obj){
-        _.each(viableUserList,function(usr){
-            if(usr.occupation.indexOf(obj)>-1)
-            {
+    _.each(viableUserList,function(usr){
+        _.each(allKeys,function(key){
+            var commonMatch = _.intersection(loggedinuser[key],usr[key])
+            if(commonMatch.length == usr[key].length && usr[key].length!=0){
                 usr['score'] += 20;
             }
-        })
-    })
-    _.each(loggedinuser.area,function(obj){
-        _.each(viableUserList,function(usr){
-            if(usr.area.indexOf(obj)>-1)
-            {
-                usr['score'] += 20;
+            else{
+                usr['score'] += Math.floor((20/loggedinuser[key].length)*commonMatch.length)
             }
         })
+        usr['score'] =  usr['score'] >100 ? 100: usr['score']
     })
-    _.each(loggedinuser.qualification,function(obj){
-        _.each(viableUserList,function(usr){
-            if(usr.qualification.indexOf(obj)>-1)
-            {
-                usr['score'] += 2.5;
-            }
-        })
+    var searchResult = _.orderBy(_.filter(jsonUser,function(obj){return obj.score>0;}),'score').reverse()
+
+    var getSearchResultFromCache = getStorage('searchResult');
+    if (getSearchResultFromCache == null) 
+        getSearchResultFromCache = [];
+
+    if(_.filter(getSearchResultFromCache,function(obj){return obj['abir@gmail.com'] != null}).length == 0 )
+        getSearchResultFromCache.push( {[loggedInUser.email]:{searchResult}});
+    else
+        _.filter(getSearchResultFromCache,function(obj){return obj['abir@gmail.com'] != null})[0]['abir@gmail.com'] = searchResult;
+    
+    searchCandidateList = searchResult
+    $('.search-result-button').val(searchCandidateList.length);
+
+    setStorage('searchResult', getSearchResultFromCache)
+}
+function showCandidate(from,size){
+    $('.search-list').empty()
+    _.each(searchCandidateList.slice(from,from+size),function(obj){
+        $('.search-list').append(`<div class="search-profile-info">
+        <div class="search-result-user-logo padT5percent">
+            <span class="search-result-user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
+        </div>
+        <div class="search-name-button">
+            <div class="label-header"> `+obj.forename+` `+obj.surname+`</div>
+            <div class="candidate-result">
+                <input class="button" type="button" value="View Profile" onclick="showCandidateDetails('`+obj.email+`');togglepage('searchResult','`+obj.forename+`')"/>
+            </div>
+        </div>
+        <div class="match-percent padT8percent">
+            <button disabled class="match-percent-button button">`+obj.score+`%</br>Match </button>
+        </div>
+    </div>`)
     })
-    _.each(loggedinuser.experience,function(obj){
-        _.each(viableUserList,function(usr){
-            if(usr.experience.indexOf(obj)>-1)
-            {
-                usr['score'] += 20;
-            }
-        })
-    })
-    _.each(loggedinuser.personalAttribute,function(obj){
-        _.each(viableUserList,function(usr){
-            if(usr.personalAttribute.indexOf(obj)>-1)
-            {
-                usr['score'] += 2;
-            }
-        })
-    })
+}
+function showCandidateDetails (candidate){
+    var candidateDetail = _.first(_.filter(searchCandidateList,function(obj){
+        return candidate == obj.email
+    }))
+    $('.show-candidate-details').remove();
+    $('.body-container').append(
+    `<div class="pages show-candidate-details `+candidateDetail.forename+`" style="display:none" >
+   
+    <div class="header"> `+candidateDetail.forename+` `+candidateDetail.surname+`</div>
+    
+
+    <div class="user-logo padT5percent">
+         <span class=" user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
+    </div>
+    <div class="sub-header padT5percent">`+candidateDetail.forename+` is a</div>
+    <div class="label-header occupation">`+(candidateDetail.occupation.length>0?candidateDetail.occupation.join(', '):`N/A`)+`</div> 
+    <div class="sub-header padT5percent">specialising in</div> 
+    <div class="label-header area">`+(candidateDetail.area.length>0?candidateDetail.area.join(', '):`N/A`)+`</div> 
+    <div class="sub-header padT5percent">with the following qualifications</div> 
+    <div class="label-header qualification">`+(candidateDetail.qualification.length>0?candidateDetail.qualification.join(', '):`N/A`)+`</div> 
+    <div class="sub-header padT5percent">with the following experience</div> 
+    <div class="label-header experience">`+(candidateDetail.experience.length>0?candidateDetail.experience.join(', '):`N/A`)+`</div> 
+    <div class="sub-header padT5percent">and have following attributes</div> 
+    <div class="label-header personalAttribute">`+(candidateDetail.personalAttribute.length>0?candidateDetail.personalAttribute.join(', '):`N/A`)+`</div> 
+    <div class="contact-candidate-button">
+        <input class="button" type="button" value="Contact candidate" />
+    </div>
+
+    <div class="navigation">
+        <div class="left-nav">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('`+candidateDetail.forename+`','searchResult')"></span>
+        </div>
+       <!--<div class="right-nav ">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('personalAttribute','homepage')"></span>
+        </div> -->
+    </div>
+</div>`)
 }
 function populateUserProfile(){
     _.each(jsonUser,function(obj){
         if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()    )  {
             _.each(allKeys,function(key){
-                $('.profile>.'+key).append(obj[key].join(', '))
+                $('.profile>.'+key).empty()
+                $('.profile>.'+key).append(obj[key].length>0? obj[key].join(', '):'N/A')
             })
         }
       })

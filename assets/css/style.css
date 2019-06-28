@@ -132,15 +132,16 @@ html,body{
 }
 .body-container .pages .sub-header{
     margin: 5% 10% 5% 10%;
-    font-size:26px;
+    font-size:30px;
     text-align: center;
     color:#8dacf5;
 }
 .body-container .pages .label-header{
     margin: 5% 10% 5% 10%;
-    font-size:40px;
+    font-size:50px;
     text-align: center;
     color:#8dacf5;
+    font-weight: bolder;
 }
 .body-container .pages .scatter-button{
     margin: 10% 10% 0% 10%;
@@ -284,4 +285,7 @@ html,body{
 }
 .search-profile-info .search-name-button{
     display:flex;flex-direction:column;width: 60%;
+}
+.contact-candidate-button{
+    margin: 15% 10% 0% 10%;
 }

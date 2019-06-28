@@ -40,7 +40,10 @@ var attributes =
         '1-3 Years', 
         '4-6 Years', 
         '7-9 Years', 
-        '10 Years +'
+        '10 Years +', 
+        '11 Years +', 
+        '12 Years +', 
+        '13 Years +'
     ],
     personalAttribute:[ //2*
         'Team Leader', 

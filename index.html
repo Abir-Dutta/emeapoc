@@ -210,7 +210,8 @@
                 </div>
             </div>
 
-            <div class="createprofile for-candidate" onclick="updateUser();togglepage('personalAttribute','about')">Create Profile</div>
+            <!--<div class="createprofile for-candidate create" onclick="updateUser();togglepage('personalAttribute','about')">Create Profile</div>-->
+            <div class="createprofile for-candidate update" onclick="updateUser();togglepage('personalAttribute','about')">Update Profile</div>
             <div class="createprofile for-client" onclick="updateUser();togglepage('personalAttribute','resultSet')">View Profiles</div>
             <div class="navigation">
                 <div class="left-nav">
@@ -247,9 +248,9 @@
                 <input class="input-text" type="text" placeholder="My hobbies outside of work includes ..." />
             </div>
             <div class="navigation">
-                <!--<div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('about','experience')"></span>
-                </div>-->
+                 <div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('about','personalAttribute')"></span>
+                </div> 
                <div class="right-nav ">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();populateUserProfile();togglepage('about','profile');"></span>
                 </div> 
@@ -284,12 +285,12 @@
             </div>
 
             <div class="navigation">
-                <!--<div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('personalAttribute','experience')"></span>
-                </div>-->
-               <div class="right-nav ">
+               <div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('profile','about')"></span>
+                </div>
+                <!--<div class="right-nav ">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('personalAttribute','homepage')"></span>
-                </div> 
+                </div>--> 
             </div>
         </div>
         <div class="pages resultSet" style="display:none">
@@ -306,15 +307,15 @@
             <div class="header padT5percent">Potential Candidates!</div>
             
              <div class="view-candidate">
-                <input class="button" type="button" value="View Candidates" />
+                <input class="button" type="button" value="View Candidates" onclick="showCandidate(0,5);togglepage('resultSet','searchResult');"/>
             </div>
             <div class="navigation">
-                <!--<div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('about','experience')"></span>
-                </div>-->
-               <div class="right-nav ">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('resultSet','searchResult');"></span>
-                </div> 
+                <div class="left-nav">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('resultSet','personalAttribute')"></span>
+                </div>
+               <!--<div class="right-nav ">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="showCandidate(0,5);togglepage('resultSet','searchResult');"></span>
+                </div> -->
             </div>
         </div>
         <div class="pages searchResult"  style="display:none">
@@ -325,52 +326,11 @@
 
 
             <div class="search-list">
-                <div class="search-profile-info">
-                    <div class="search-result-user-logo padT5percent">
-                        <span class="search-result-user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
-                    </div>
-                    <div class="search-name-button">
-                        <div class="label-header"> Abir Dutta </div>
-                        <div class="candidate-result">
-                            <input class="button" type="button" value="View Profile" />
-                        </div>
-                    </div>
-                    <div class="match-percent padT8percent">
-                        <button disabled class="match-percent-button button">0% </br>Match </button>
-                    </div>
-                </div>
-                <div class="search-profile-info">
-                    <div class="search-result-user-logo padT5percent">
-                        <span class="search-result-user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
-                    </div>
-                    <div class="search-name-button">
-                        <div class="label-header"> Abir Dutta </div>
-                        <div class="candidate-result">
-                            <input class="button" type="button" value="View Profile" />
-                        </div>
-                    </div>
-                    <div class="match-percent padT8percent">
-                        <button disabled class="match-percent-button button">99% </br>Match </button>
-                    </div>
-                </div>
-                    <div class="search-profile-info">
-                    <div class="search-result-user-logo padT5percent">
-                        <span class="search-result-user-logo-border glyphicon  glyphicon-user" aria-hidden="true"></span>
-                    </div>
-                    <div class="search-name-button">
-                        <div class="label-header"> Abir Dutta </div>
-                        <div class="candidate-result">
-                            <input class="button" type="button" value="View Profile" />
-                        </div>
-                    </div>
-                    <div class="match-percent padT8percent">
-                        <button disabled class="match-percent-button button">100% </br>Match </button>
-                    </div>
-                </div>
+               
             </div>
              
             <div class="candidate-result padT10percent">
-                <input class="button" type="button" value="Show next 5 results" />
+                <input class="button" type="button" value="Show next 5 results" onclick="showCandidate(5,5)"/>
             </div>
             <div class="navigation">
                 <div class="left-nav">
