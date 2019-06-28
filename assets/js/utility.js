@@ -251,7 +251,8 @@ function searchCandidate(loggedinuser){
                 usr['score'] += 20;
             }
             else{
-                usr['score'] += Math.floor((20/loggedinuser[key].length)*commonMatch.length)
+                if(loggedinuser[key].length != 0)
+                    usr['score'] += Math.floor((20/loggedinuser[key].length)*commonMatch.length)
             }
         })
         usr['score'] =  usr['score'] >100 ? 100: usr['score']
@@ -262,10 +263,10 @@ function searchCandidate(loggedinuser){
     if (getSearchResultFromCache == null) 
         getSearchResultFromCache = [];
 
-    if(_.filter(getSearchResultFromCache,function(obj){return obj['abir@gmail.com'] != null}).length == 0 )
+    if(_.filter(getSearchResultFromCache,function(obj){return obj[loggedInUser.email] != null}).length == 0 )
         getSearchResultFromCache.push( {[loggedInUser.email]:{searchResult}});
     else
-        _.filter(getSearchResultFromCache,function(obj){return obj['abir@gmail.com'] != null})[0]['abir@gmail.com'] = searchResult;
+        _.filter(getSearchResultFromCache,function(obj){return obj[loggedInUser.email] != null})[0][loggedInUser.email] = searchResult;
     
     searchCandidateList = searchResult
     $('.search-result-button').val(searchCandidateList.length);
