@@ -3,8 +3,15 @@ html,body{
     font-size: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color:#8dacf5;
+    display: none;
 }
-
+.center-div{
+    display:flex;
+    align-items:center;
+    text-align:center;
+    justify-content: center;
+    height:100%
+}
 .button{
     border-radius: 50px;
     width: 100%;

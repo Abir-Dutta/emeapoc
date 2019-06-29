@@ -5,12 +5,18 @@ function togglepage(tohide,toshow){
         scrollTop: 0
     }, 0);
 }
-
-var statter_element_occupation =[];
-var statter_element_area =[];
-var statter_element_qualification =[];
-var statter_element_experience =[];
-var statter_element_personalAttribute =[];
+var allUserAttributes={
+    'scatter_element_occupation':[],
+    'scatter_element_area':[],
+    'scatter_element_qualification':[],
+    'scatter_element_experience':[],
+    'scatter_element_personalAttribute':[],
+}
+// var statter_element_occupation =[];
+// var statter_element_area =[];
+// var statter_element_qualification =[];
+// var statter_element_experience =[];
+// var statter_element_personalAttribute =[];
 
 var jsonUser = [];
 var loggedInUser = {}
@@ -34,13 +40,18 @@ function getStorage(key){
    return JSON.parse(localStorage.getItem(key)); 
 }
 
-function generate_attribute_DOMitems(){
 
-}
-
+$(window).resize(function(){
+    location.reload();
+  });
 $( document ).ready(function() {
-
-   
+    
+    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+        $('body').empty();
+        $('body').append('<div class="center-div">Mobile Device only. Not supported in desktop.</div>')
+       
+    }
+    $('body,html').show()
     intialStorage();
 
     //sign up button enable on click of roles button
@@ -76,61 +87,20 @@ $( document ).ready(function() {
     //     $(obj1).removeClass('hollow-clicked')
     //  });
 
-    $('.scatter-button.occupation').click(function(e){
-       var statter_elementidx = statter_element_occupation.indexOf(e.target.value)
-        if(statter_elementidx==-1){
-            statter_element_occupation.push(e.target.value);
-            $(e.target).addClass('hollow-clicked')
-        }
-        else {
-            statter_element_occupation.splice(statter_elementidx,1);
-            $(e.target).removeClass('hollow-clicked')
-        }
-    });
-    $('.scatter-button.area').click(function(e){
-        var statter_elementidx = statter_element_area.indexOf(e.target.value)
-         if(statter_elementidx==-1){
-            statter_element_area.push(e.target.value);
-             $(e.target).addClass('hollow-clicked')
-         }
-         else {
-            statter_element_area.splice(statter_elementidx,1);
-             $(e.target).removeClass('hollow-clicked')
-         }
-     });
-     $('.scatter-button.qualification').click(function(e){
-        var statter_elementidx = statter_element_qualification.indexOf(e.target.value)
-         if(statter_elementidx==-1){
-            statter_element_qualification.push(e.target.value);
-             $(e.target).addClass('hollow-clicked')
-         }
-         else {
-            statter_element_qualification.splice(statter_elementidx,1);
-             $(e.target).removeClass('hollow-clicked')
-         }
-     });
-     $('.scatter-button.experience').click(function(e){
-        var statter_elementidx = statter_element_experience.indexOf(e.target.value)
-         if(statter_elementidx==-1){
-            statter_element_experience.push(e.target.value);
-             $(e.target).addClass('hollow-clicked')
-         }
-         else {
-            statter_element_experience.splice(statter_elementidx,1);
-             $(e.target).removeClass('hollow-clicked')
-         }
-     });
-     $('.scatter-button.personalAttribute').click(function(e){
-        var statter_elementidx = statter_element_personalAttribute.indexOf(e.target.value)
-         if(statter_elementidx==-1){
-            statter_element_personalAttribute.push(e.target.value);
-             $(e.target).addClass('hollow-clicked')
-         }
-         else {
-            statter_element_personalAttribute.splice(statter_elementidx,1);
-             $(e.target).removeClass('hollow-clicked')
-         }
-     });
+    _.each(allKeys,function(key){
+        $('.scatter-button.'+key).click(function(e){
+            var statter_elementidx = allUserAttributes['scatter_element_'+key].indexOf(e.target.value)
+             if(statter_elementidx==-1){
+                allUserAttributes['scatter_element_'+key].push(e.target.value);
+                 $(e.target).addClass('hollow-clicked')
+             }
+             else {
+                allUserAttributes['scatter_element_'+key].splice(statter_elementidx,1);
+                 $(e.target).removeClass('hollow-clicked')
+             }
+         });
+    })
+    
   });
 function setAttributes(loggedinuser){
      $.each($('.scatter-button').find('input'),function(idx1,obj1){
@@ -148,13 +118,15 @@ function setAttributes(loggedinuser){
         $('.for-'+loggedinuser.role+'.update').show();
     }
       
-           statter_element_occupation = loggedinuser['occupation'] ;
-           statter_element_area = loggedinuser['area'] ;
-           statter_element_qualification = loggedinuser['qualification'] ;
-           statter_element_experience = loggedinuser['experience'] ;
-           statter_element_personalAttribute = loggedinuser['personalAttribute'] ;
+        //    statter_element_occupation = loggedinuser['occupation'] ;
+        //    statter_element_area = loggedinuser['area'] ;
+        //    statter_element_qualification = loggedinuser['qualification'] ;
+        //    statter_element_experience = loggedinuser['experience'] ;
+        //    statter_element_personalAttribute = loggedinuser['personalAttribute'] ;
 
            _.each(allKeys,function(key){
+            allUserAttributes['scatter_element_'+key] = loggedinuser[key];
+
             $.each(loggedinuser[key],function(occidx,occobj){
                 $.each($('.scatter-button.'+key).find('input'),function(idx1,obj1){
                     if($(obj1).val() == occobj){
@@ -213,11 +185,14 @@ function addUser(){
         }
         jsonUser.push(newUser)
         loggedInUser = newUser;
-        statter_element_occupation =[];
-        statter_element_area =[];
-        statter_element_qualification =[];
-        statter_element_experience =[];
-        statter_element_personalAttribute =[];
+        // statter_element_occupation =[];
+        // statter_element_area =[];
+        // statter_element_qualification =[];
+        // statter_element_experience =[];
+        // statter_element_personalAttribute =[];
+        _.each(allKeys,function(key){
+            allUserAttributes['scatter_element_'+key] = [];
+       })
 
     isNewUser =true;
 
@@ -250,11 +225,15 @@ function disableEnableProfile(disableEnable){
 function updateUser(){
     // $.each(jsonUser,function(idx,obj){
     //     if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()    )  {
-        loggedInUser['occupation'] = statter_element_occupation;
-        loggedInUser['area'] = statter_element_area;
-        loggedInUser['qualification'] = statter_element_qualification;
-        loggedInUser['experience'] = statter_element_experience;
-        loggedInUser['personalAttribute'] = statter_element_personalAttribute;
+        // loggedInUser['occupation'] = statter_element_occupation;
+        // loggedInUser['area'] = statter_element_area;
+        // loggedInUser['qualification'] = statter_element_qualification;
+        // loggedInUser['experience'] = statter_element_experience;
+        // loggedInUser['personalAttribute'] = statter_element_personalAttribute;
+
+        _.each(allKeys,function(key){
+            loggedInUser[key] =allUserAttributes['scatter_element_'+key];
+        })
         if(loggedInUser.role == 'client'){
             searchCandidate(loggedInUser)
         }
