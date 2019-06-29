@@ -1,6 +1,9 @@
 function togglepage(tohide,toshow){
     document.getElementsByClassName(tohide)[0].style.display ="none";
     document.getElementsByClassName(toshow)[0].style.display ="block";
+    $("html, body").animate({
+        scrollTop: 0
+    }, 0);
 }
 
 var statter_element_occupation =[];
@@ -162,13 +165,22 @@ function setAttributes(loggedinuser){
            })
 }
   function checkLogin(){
-    $.each(jsonUser,function(idx,obj){
-        if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()  )  {
-            loggedInUser = obj;
-            setAttributes(loggedInUser);
-            togglepage('login','occupation');
-        }
-      })
+      if($('#log-email').val()!='' || $('#log-password').val() !=''){
+            var foundUser = false
+            $.each(jsonUser,function(idx,obj){
+                if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()  )  {
+                    loggedInUser = obj;
+                    foundUser = true
+                    setAttributes(loggedInUser);
+                    togglepage('login','occupation');
+                }
+            })
+            if(!foundUser){
+                alert('Bad password or user don\'t exist!')
+            }
+            $('#log-email').val('');
+            $('#log-password').val('');
+      }
 }
 function addUser(){
     var userExist = false;
@@ -211,14 +223,26 @@ function addUser(){
 
         setAttributes(loggedInUser);
         setStorage('users', jsonUser)
+        clearFields();
+
 
         togglepage('signup','login');
       }
       else{
-        $('#log-email').val($('#sign-email').val())
-        $('#log-email').val('');
+        clearFields();
+        alert("User already exists!")
         togglepage('signup','login');
       }
+}
+function clearFields(){
+    $('#log-email').val($('#sign-email').val())
+    $('#sign-fname').val('');
+    $('#sign-lname').val('') ;
+    $('#sign-email').val('');
+    $('#sign-password').val('');
+    $('.check').hide();
+    $('.sign-up>input').addClass('disabled');
+    $('.sign-up>input').attr("disabled","disabled");
 }
 function disableEnableProfile(disableEnable){
     loggedInUser.disabled = !disableEnable;
@@ -331,12 +355,9 @@ function showCandidateDetails (candidate){
 </div>`)
 }
 function populateUserProfile(){
-    _.each(jsonUser,function(obj){
-        if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()    )  {
+   
             _.each(allKeys,function(key){
                 $('.profile>.'+key).empty()
-                $('.profile>.'+key).append(obj[key].length>0? obj[key].join(', '):'N/A')
+                $('.profile>.'+key).append(loggedInUser[key].length>0? loggedInUser[key].join(', '):'N/A')
             })
         }
-      })
-}
