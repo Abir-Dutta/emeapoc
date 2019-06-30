@@ -268,6 +268,9 @@ html,body{
     margin: 2% 5% 0% 5%;
     
 }
+.body-container .searchResult .percentage-input,.body-container .searchResult .update-search-btn{
+    margin: 1% 10% 5% 10%;
+}
 .search-profile-info .search-name-button .label-header{
     text-align: left;
     padding-top: 10%;
@@ -295,4 +298,18 @@ html,body{
 }
 .contact-candidate-button{
     margin: 15% 10% 0% 10%;
+}
+.instant-search .button{
+    font-size: 35px;
+    height: 90px;
+}
+.instant-search .filter-navigation{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 9%;
+}
+.instant-search .filter-hide{
+    border: 3px solid #8dacf5;
+    padding: 1% 5%;
+    border-radius: 20px;
 }

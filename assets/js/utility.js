@@ -1,9 +1,14 @@
 function togglepage(tohide,toshow){
-    document.getElementsByClassName(tohide)[0].style.display ="none";
-    document.getElementsByClassName(toshow)[0].style.display ="block";
+    // document.getElementsByClassName(tohide)[0].style.display ="none";
+    // document.getElementsByClassName(toshow)[0].style.display ="block";
+    $(tohide).hide()
+    $(toshow).show()
     $("html, body").animate({
         scrollTop: 0
     }, 0);
+}
+function toggleElement(className){
+    $(className).toggle();
 }
 var allUserAttributes={
     'scatter_element_occupation':[],
@@ -89,18 +94,26 @@ $( document ).ready(function() {
 
     _.each(allKeys,function(key){
         $('.scatter-button.'+key).click(function(e){
-            var statter_elementidx = allUserAttributes['scatter_element_'+key].indexOf(e.target.value)
-             if(statter_elementidx==-1){
-                allUserAttributes['scatter_element_'+key].push(e.target.value);
-                 $(e.target).addClass('hollow-clicked')
-             }
-             else {
-                allUserAttributes['scatter_element_'+key].splice(statter_elementidx,1);
-                 $(e.target).removeClass('hollow-clicked')
-             }
+            if(e.target.value){
+                var statter_elementidx = allUserAttributes['scatter_element_'+key].indexOf(e.target.value)
+                if(statter_elementidx==-1){
+                    allUserAttributes['scatter_element_'+key].push(e.target.value);
+                    $(e.target).addClass('hollow-clicked')
+                }
+                else {
+                    allUserAttributes['scatter_element_'+key].splice(statter_elementidx,1);
+                    $(e.target).removeClass('hollow-clicked')
+                }
+            }
          });
     })
-    
+    $('.percentage-input>input').on('keyup',function(){
+        if ($(this).val() > 100)
+        {
+            $(this).val($(this).val().slice(0,2))
+        }
+    });
+    toggleElement('.instant-search input, .instant-search .instant-search-control');
   });
 function setAttributes(loggedinuser){
      $.each($('.scatter-button').find('input'),function(idx1,obj1){
@@ -144,7 +157,7 @@ function setAttributes(loggedinuser){
                     loggedInUser = obj;
                     foundUser = true
                     setAttributes(loggedInUser);
-                    togglepage('login','occupation');
+                    togglepage('.pages.login','.pages.occupation');
                 }
             })
             if(!foundUser){
@@ -152,6 +165,8 @@ function setAttributes(loggedinuser){
             }
             $('#log-email').val('');
             $('#log-password').val('');
+            $('.percentage-input>input').val('')
+
       }
 }
 function addUser(){
@@ -163,7 +178,7 @@ function addUser(){
       })
       if(!userExist){
           var role = '';
-          $.each($('.check'),function(idx,obj){
+          $.each($('.roles>.check'),function(idx,obj){
               if($(obj).is(":visible")){
                 role = $($(obj).siblings('input')).val();
               }
@@ -173,7 +188,7 @@ function addUser(){
             surname:$('#sign-lname').val(),
             email:$('#sign-email').val(),
             password:$('#sign-password').val(),
-            role:role,
+            role:role.toLowerCase(),
             disabled:false,
             occupation:[],
             area:[],
@@ -201,12 +216,12 @@ function addUser(){
         clearFields();
 
 
-        togglepage('signup','login');
+        togglepage('.pages.signup','.pages.login');
       }
       else{
         clearFields();
         alert("User already exists!")
-        togglepage('signup','login');
+        togglepage('.pages.signup','.pages.login');
       }
 }
 function clearFields(){
@@ -218,9 +233,15 @@ function clearFields(){
     $('.check').hide();
     $('.sign-up>input').addClass('disabled');
     $('.sign-up>input').attr("disabled","disabled");
+    $('.percentage-input>input').val('')
 }
 function disableEnableProfile(disableEnable){
+    $('.activate-profile').click(function(){
+        $('.check').hide();
+        $(this).find('.check').show();
+    })
     loggedInUser.disabled = !disableEnable;
+    updateUser();
 }
 function updateUser(){
     // $.each(jsonUser,function(idx,obj){
@@ -234,7 +255,7 @@ function updateUser(){
         _.each(allKeys,function(key){
             loggedInUser[key] =allUserAttributes['scatter_element_'+key];
         })
-        if(loggedInUser.role == 'client'){
+        if(loggedInUser.role.toLowerCase() == 'client'){
             searchCandidate(loggedInUser)
         }
       //})
@@ -245,17 +266,26 @@ function updateUser(){
 function searchCandidate(loggedinuser){
     var viableUserList = _.filter(jsonUser,function(obj){
         obj['score'] = 0;
-        return obj.role == 'candidate' && obj.disabled == false;
+        return obj.role.toLowerCase() == 'candidate' && obj.disabled == false;
     })
+    var constrainedFilter = ['experience']
     _.each(viableUserList,function(usr){
         _.each(allKeys,function(key){
-            var commonMatch = _.intersection(loggedinuser[key],usr[key])
-            if(commonMatch.length == usr[key].length && usr[key].length!=0){
+            if(loggedinuser[key].length == 0){
                 usr['score'] += 20;
             }
             else{
-                if(loggedinuser[key].length != 0)
-                    usr['score'] += Math.floor((20/loggedinuser[key].length)*commonMatch.length)
+                var commonMatch = _.intersection(loggedinuser[key],usr[key])
+                if(commonMatch.length == usr[key].length && usr[key].length!=0){
+                    if(constrainedFilter.indexOf(key)>=0)
+                        usr['score'] += 20;
+                    else
+                        usr['score'] += Math.round((20/loggedinuser[key].length)*commonMatch.length)
+                }
+                else{
+                    if(usr[key].length!=0)
+                        usr['score'] += Math.round((20/loggedinuser[key].length)*(commonMatch.length/usr[key].length))
+                }
             }
         })
         usr['score'] =  usr['score'] >100 ? 100: usr['score']
@@ -270,14 +300,28 @@ function searchCandidate(loggedinuser){
         getSearchResultFromCache.push( {[loggedInUser.email]:{searchResult}});
     else
         _.filter(getSearchResultFromCache,function(obj){return obj[loggedInUser.email] != null})[0][loggedInUser.email] = searchResult;
-    
-    searchCandidateList = searchResult
+       
+    var userSetPercent = $('.percentage-input>input').val();
+    if(userSetPercent != ""){
+        searchCandidateList = _.filter(searchResult,function(obj){
+            return obj.score >= userSetPercent;
+        })
+    }
+    else
+        searchCandidateList = searchResult
     $('.search-result-button').val(searchCandidateList.length);
-
+    $('.search-result-button').html(searchCandidateList.length>=5?5:searchCandidateList.length);
+    if(searchCandidateList.length>5)
+        $('.candidate-result').show()
+    else
+        $('.candidate-result').hide()
+    if(searchCandidateList.length == 0)
+        alert('No Match found')
     setStorage('searchResult', getSearchResultFromCache)
 }
 function showCandidate(from,size){
     $('.search-list').empty()
+    
     _.each(searchCandidateList.slice(from,from+size),function(obj){
         $('.search-list').append(`<div class="search-profile-info">
         <div class="search-result-user-logo padT5percent">
@@ -286,7 +330,7 @@ function showCandidate(from,size){
         <div class="search-name-button">
             <div class="label-header"> `+obj.forename+` `+obj.surname+`</div>
             <div class="candidate-result">
-                <input class="button" type="button" value="View Profile" onclick="showCandidateDetails('`+obj.email+`');togglepage('searchResult','`+obj.forename+`')"/>
+                <input class="button" type="button" value="View Profile" onclick="showCandidateDetails('`+obj.email+`');togglepage('.pages.searchResult','.pages.`+obj.forename+`')"/>
             </div>
         </div>
         <div class="match-percent padT8percent">
@@ -325,18 +369,24 @@ function showCandidateDetails (candidate){
 
     <div class="navigation">
         <div class="left-nav">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('`+candidateDetail.forename+`','searchResult')"></span>
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.`+candidateDetail.forename+`','.pages.searchResult')"></span>
         </div>
        <!--<div class="right-nav ">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('personalAttribute','homepage')"></span>
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')"></span>
         </div> -->
     </div>
 </div>`)
 }
 function populateUserProfile(){
-   
-            _.each(allKeys,function(key){
-                $('.profile>.'+key).empty()
-                $('.profile>.'+key).append(loggedInUser[key].length>0? loggedInUser[key].join(', '):'N/A')
-            })
-        }
+    $('.activate-profile>.check').hide()
+   if(loggedInUser.disabled){
+       $('.deactive-candidate>.check').show()
+   }
+   else{
+       $('.active-candidate>.check').show()
+   }
+    _.each(allKeys,function(key){
+        $('.profile>.'+key).empty()
+        $('.profile>.'+key).append(loggedInUser[key].length>0? loggedInUser[key].join(', '):'N/A')
+    })
+}
