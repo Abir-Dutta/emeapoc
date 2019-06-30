@@ -46,9 +46,21 @@ function getStorage(key){
 }
 
 
-$(window).resize(function(){
-    location.reload();
-  });
+// $(window).resize(function(){
+//     location.reload();
+//   });
+function checkValidation(){
+    if(_.filter($('.sign-up-form>input'),function(obj){ return $(obj).val()==''}).length == 0 && _.filter($('.roles>.check'),function(obj){return $(obj).is(":visible")}).length>0)
+    {
+        $('.sign-up>input').removeClass('disabled');
+        $('.sign-up>input').removeAttr("disabled");
+    }
+    else{
+        $('.sign-up>input').addClass('disabled');
+        $('.sign-up>input').attr("disabled","disabled");
+    }
+}
+
 $( document ).ready(function() {
     
     if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
@@ -63,9 +75,13 @@ $( document ).ready(function() {
     $('.roles').click(function(){
         $('.check').hide();
         $(this).find('.check').show();
-        $('.sign-up>input').removeClass('disabled');
-        $('.sign-up>input').removeAttr("disabled");
+        checkValidation()
     })
+    
+    $('.sign-up-form>input').on('blur',function(){
+        checkValidation()
+    })
+
     //get user list from storage
     jsonUser = getStorage("users")
     //get all attributes for rendering
@@ -150,7 +166,7 @@ function setAttributes(loggedinuser){
            })
 }
   function checkLogin(){
-      if($('#log-email').val()!='' || $('#log-password').val() !=''){
+      if($('#log-email').val()!='' && $('#log-password').val() !=''){
             var foundUser = false
             $.each(jsonUser,function(idx,obj){
                 if(obj['email'] == $('#log-email').val() && obj['password'] == $('#log-password').val()  )  {
@@ -170,6 +186,7 @@ function setAttributes(loggedinuser){
       }
 }
 function addUser(){
+    if($('#sign-email').val()!='' && $('#sign-password').val()!=''){
     var userExist = false;
     $.each(jsonUser,function(idx,obj){
         if(obj['email'] == $('#sign-email').val() && obj['password'] == $('#sign-password').val()  )  {
@@ -223,6 +240,7 @@ function addUser(){
         alert("User already exists!")
         togglepage('.pages.signup','.pages.login');
       }
+    }
 }
 function clearFields(){
     $('#log-email').val($('#sign-email').val())
