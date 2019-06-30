@@ -286,7 +286,7 @@ function searchCandidate(loggedinuser){
         obj['score'] = 0;
         return obj.role.toLowerCase() == 'candidate' && obj.disabled == false;
     })
-    var constrainedFilter = ['experience']
+    var constrainedFilter = ['occupation','area','experience']
     _.each(viableUserList,function(usr){
         _.each(allKeys,function(key){
             if(loggedinuser[key].length == 0){
