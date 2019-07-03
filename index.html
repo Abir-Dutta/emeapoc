@@ -1,10 +1,10 @@
-<html>
+
+<html lang="en">
     <head>
+    <meta name="Description" content="NHR">
         <title>NHR</title>
-         <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
          <link rel="stylesheet" href="./assets/css/bootstrap-glyphicons.css">
     <script src="./assets/js/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
        <script src="./assets/js/utility.js"></script>
        <script src="./assets/js/data.js"></script>
@@ -14,7 +14,7 @@
     <div class="body-container">
         <div class="pages homepage"  >
             <div class="homepage-logo">
-                <img class="logo" src="./assets/images/logo.png"/>
+                <img alt="app-logo" class="logo" src="./assets/images/logo.png"/>
             </div>
             <div class="sign-up-email">
                 <input class="button white" type="button" value="Sign Up with Email" onclick="togglepage('.pages.homepage','.pages.signup')"/>
@@ -34,7 +34,7 @@
         </div>
         <div class="pages signup" style="display:none" >
          <div class="signup-logo">
-                <img class="logo" src="./assets/images/logo.png"/>
+                <img  alt="app-logo" class="logo" src="./assets/images/logo.png"/>
             </div>
             <div class="sign-up-form">
                 <input class="input-text" type="text" placeholder="First Name"  id="sign-fname"/>
@@ -61,7 +61,7 @@
         </div>
         <div class="pages login" style="display:none"  >
          <div class="login-logo">
-                <img class="logo" src="./assets/images/logo.png"/>
+                <img  alt="app-logo" class="logo" src="./assets/images/logo.png"/>
             </div>
             <div class="login-form">
                 <input class="input-text" type="email" placeholder="Your Email" id="log-email"/>
@@ -317,8 +317,7 @@
             <div class="header padT5percent">Potential Candidates!</div>
             
              <div class="view-candidate">
-                <!--<input class="button" type="button" value="Show Result" onclick="showCandidate(0,5);togglepage('.pages.resultSet','.pages.searchResult');"/>-->
-                <input class="button" type="button" value="Show Result"/>
+                <input class="button" type="button" value="Show Result" onclick="showCandidate(0,5);togglepage('.pages.resultSet','.pages.searchResult');"/>
             </div>
             <div class="navigation">
                 <div class="left-nav">

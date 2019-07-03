@@ -246,21 +246,23 @@ html,body{
     margin: 12% 10%;
 }
 .body-container .resultSet .search-result{
-    margin: 12% 35%;
-    
+    margin: 5% 35% 20% 35%;
+    height: 250px;
+    display: flex;
+    justify-content: space-around;
 }
 .body-container .resultSet .match-percent{
     margin: 12% 35%;
     
 }
 .search-result-button{
-    height: 14%;
-    width: 85%;
+    height: 150%;
+    width: 80%;
     border-radius: 130px;
 }
 .match-percent-button{
-    height: 11%;
-    width: 190px;
+    height: 70%;
+    width: 145%;
     border-radius: 130px;
     background-color: #84a0db;
 }
@@ -284,6 +286,7 @@ html,body{
 {
     display:flex;
     margin: 5% 5%;
+    height: 250px;
 }
 .search-result-user-logo{
     text-align: center;
@@ -294,7 +297,9 @@ html,body{
     height: 215px;
 }
 .search-profile-info .search-name-button{
-    display:flex;flex-direction:column;width: 60%;
+    display:flex;
+    flex-direction:column;
+    width: 55%;
 }
 .contact-candidate-button{
     margin: 15% 10% 0% 10%;
