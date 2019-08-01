@@ -9,7 +9,12 @@ var attributes =
         'Physiotherapist', 
         'Dietician', 
         'Osteopath', 
-        'Radiographer'
+        'Radiographer',
+        "Business Analyst",
+        "Project Manager",
+        "Teacher",
+        "Lecturer",
+        "Professor"
     ],
     area:[ //20
         'Wellbeing', 
@@ -20,7 +25,12 @@ var attributes =
         'Physcology', 
         'Administration', 
         'Social Care', 
-        'Radiography'
+        'Radiography',
+        "Insurance",
+        "Real Estate",
+        "Education",
+        "Digital and Technology",
+        "Retail"
     ],
     qualification:[ //20
         'Radiography Cert',
@@ -31,7 +41,18 @@ var attributes =
         'Midwifery Cert',
         'Critical Care Nurse',
         'Lactation Certified',
-        'Lactation Consultant'
+        'Lactation Consultant',
+        "ITIL",
+        "Prince 2",
+        "Agile",
+        "PMP",
+        "CBAP",
+        "CISR",
+        "CPCU",
+        "LOMA",
+        "SKE",
+        "QTS",
+        "General Teaching Council Qualification"
 
     ],
     experience:[ //20
