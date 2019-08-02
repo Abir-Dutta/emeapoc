@@ -371,11 +371,11 @@ function showCandidateDetails (candidate){
     <div class="top-banner">
                 <span class="time">10:00</span>
                 <div class="app-name">
-                    <div style="height: 130%;"><img src="./assets/images/logo3.png" style="width: 300px;"></div>
+                    <div style="height: 210px;"><img src="./assets/images/logo3.png" style="width: 300px;"></div>
                     <div style="text-align: center;"><span>OPTIMUM</span></div>
                 </div>
                 <span class="date">04/08/2019</span>
-            </div>     
+            </div>  
     <div class="header padT5percent"> `+candidateDetail.forename+` `+candidateDetail.surname+`</div>
     
 
