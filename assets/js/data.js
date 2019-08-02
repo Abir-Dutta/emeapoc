@@ -52,7 +52,7 @@ var attributes =
         "LOMA",
         "SKE",
         "QTS",
-        "General Teaching Council Qualification"
+        "GTC"
 
     ],
     experience:[ //20

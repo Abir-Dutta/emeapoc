@@ -368,12 +368,15 @@ function showCandidateDetails (candidate){
     $('.show-candidate-details').remove();
     $('.body-container').append(
     `<div class="pages show-candidate-details `+candidateDetail.forename+`" style="display:none" >
-    <div class="top-banner" >
-        <span class="time">10:00</span>
-        <span class="app-name" >OPTIMUM</span>
-        <span class="date">04/08/2019</span>
-    </div>   
-    <div class="header"> `+candidateDetail.forename+` `+candidateDetail.surname+`</div>
+    <div class="top-banner">
+                <span class="time">10:00</span>
+                <div class="app-name">
+                    <div style="height: 130%;"><img src="./assets/images/logo3.png" style="width: 300px;"></div>
+                    <div style="text-align: center;"><span>OPTIMUM</span></div>
+                </div>
+                <span class="date">04/08/2019</span>
+            </div>     
+    <div class="header padT5percent"> `+candidateDetail.forename+` `+candidateDetail.surname+`</div>
     
 
     <div class="user-logo padT5percent">
@@ -395,7 +398,7 @@ function showCandidateDetails (candidate){
 
     <div class="navigation">
         <div class="left-nav">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.`+candidateDetail.forename+`','.pages.searchResult')"></span>
+            <span  onclick="togglepage('.pages.`+candidateDetail.forename+`','.pages.searchResult')">Previous</span>
         </div>
        <!--<div class="right-nav ">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')"></span>

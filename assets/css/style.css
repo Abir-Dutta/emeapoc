@@ -2,9 +2,10 @@ html,body{
     margin: 0 auto;
     font-size: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:#2452bf;
+    color:#ffffff;
     display: none;
-    background-color: #cedcfd;
+    background-color: #7640b5;
+    background-image: linear-gradient(#303f9f 15%, #7640b5 35%, #6d5598 100%);
 }
 .center-div{
     display:flex;
@@ -20,7 +21,7 @@ html,body{
     min-height: 110px;
     font-size:40px;
     font-weight: bold;
-    background-color: #697fcd;
+    background-color: #430091;
     color: #ffffff;
     white-space: normal;
 }
@@ -31,11 +32,11 @@ html,body{
     
 }
  .highlight{
-    background-color:#697fcd;
+    background-color:#430091;
     color:#ffffff;
 }
 .disabled{
-    background-color: #bdd1ee;
+    background-color: #847594;
     color:#ffffff;
 }
 .hollow{
@@ -89,7 +90,9 @@ html,body{
     padding-left: 100%;
 }
 .body-container .homepage{
-    background-color:#cbcbcb;
+    /* background-color:#cbcbcb; */
+    /* background-color:    #3e51b5; */
+
     min-height: 100%;
     width: 100%;
 }
@@ -99,7 +102,7 @@ html,body{
 }
 .body-container .homepage .sign-up-email
 {
-    margin: 0% 10% 5% 10%;
+    margin: 15% 10% 5% 10%;
 }
 .body-container .homepage .log-in{
     margin: 12% 10%;
@@ -125,7 +128,7 @@ html,body{
 }
 .body-container .signup .sign-up-form,
 .body-container .login .login-form{
-    margin: 2% 10%;
+    margin: 15% 10% 2% 10%;
 }
 .body-container .signup .sign-up,
 .body-container .login .log-in{
@@ -246,10 +249,10 @@ html,body{
     margin: 2% 10%;
 }
 .body-container .profile .activate-profile{
-    margin: 12% 10%;
+    margin: 12% 10% 0% 10%;
 }
 .body-container .resultSet .view-candidate{
-    margin: 12% 10%;
+    margin: 12% 10% 0% 10%;
 }
 .body-container .resultSet .search-result{
     margin: 5% 35% 20% 35%;
@@ -270,7 +273,7 @@ html,body{
     height: 70%;
     width: 145%;
     border-radius: 130px;
-    background-color: #84a0db;
+    background-color: #430091;
 }
 .body-container .searchResult .candidate-result{
     margin: 2% 5% 0% 5%;
@@ -323,22 +326,32 @@ html,body{
     border: 3px solid #859fdb;
     padding: 1% 5%;
     border-radius: 20px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 20px;
     font-weight: bolder;
 }
+
 .top-banner{
     display: flex;
     justify-content: space-between;
     padding: 5%;
     font-size: 34px;
-    background-color: #697fcd;
+    /* background-color: #697fcd; */
+    /* background-color: #303f9f; */
     color: #ffffff;
-   /*background-image: linear-gradient(180deg, #8dacf5, #cbcbcb); */
+    /* background-image: linear-gradient(#303f9f 70%, #7640b5 90%); */
+    height: 250px;
+}
+.login .top-banner,
+.signup .top-banner,
+.homepage .top-banner{
+    height:500px;
 }
 .top-banner .app-name{
     font-size: 55px;
-    position: absolute;
+    /* position: absolute;
     left: calc(50% - 115px);
-    top: 2%;
+    top: 2%; */
+    margin-left: 10%;
+    margin-top: -8%;
 }
