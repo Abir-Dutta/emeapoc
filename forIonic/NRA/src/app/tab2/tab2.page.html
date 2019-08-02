@@ -1,0 +1,38 @@
+<ion-content fullscreen>
+<div class="body-container">
+ <div class="pages signup" >
+         <div class="signup-logo">
+                <img  alt="app-logo" class="logo" src="../assets/images/logo.png"/>
+            </div>
+            <div class="sign-up-form">
+                <ion-input class="input-text" type="text" placeholder="First Name"  id="sign-fname"></ion-input>
+                <ion-input class="input-text" type="text" placeholder="Last Name" id="sign-lname"></ion-input>
+                <ion-input class="input-text" type="email" placeholder="Your Email" id="sign-email"></ion-input>
+                <ion-input class="input-text" type="password" placeholder="Password" id="sign-password"></ion-input>
+            </div>
+            <div class="roles-parent">
+            <div class="client roles">
+                <ion-chip>
+                  <ion-icon class="color-blue"  name="checkmark-circle"></ion-icon>
+                  <ion-label class="font-adjust">Client</ion-label>
+                </ion-chip>
+            </div>
+            <div class="candidate roles">
+                <ion-chip>
+                  <ion-icon class="color-blue" name="radio-button-off"></ion-icon>
+                  <ion-label class="font-adjust">Candidate</ion-label>
+                </ion-chip>
+            </div>
+            </div>
+            <div class="sign-up">
+                <ion-button  shape="round" disabled class="button disabled" type="button"(click)="addUser()">Sign Up</ion-button>
+            </div>
+            <div class="navigation">
+                <div class="left-nav">
+               <ion-icon class="nav-arrow" name="arrow-round-back" (click)="goToHomePage()">Back</ion-icon>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick="togglepage('.pages.signup','.pages.homepage')"></span>-->
+                </div>
+            </div>
+        </div>
+      </div>
+</ion-content>

@@ -1,0 +1,330 @@
+$color-blue:#8dacf5;
+
+
+html,body{
+    margin: 0 auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:$color-blue;
+    background-color: #cbcbcb;
+}
+.center-div{
+    display:flex;
+    align-items:center;
+    text-align:center;
+    justify-content: center;
+    height:100%
+}
+.button{
+    border-radius: 50px;
+    width: 100%;
+    border: 0px;
+    height: 50px;
+    font-size:16px;
+    font-weight: bold;
+    background-color: #697fcd;
+    color: #ffffff;
+    text-transform: none;
+}
+
+.white{
+    background-color:#ffffff;
+    color:#7e99f3;
+    
+}
+ .highlight{
+    background-color:#697fcd;
+    color:#ffffff;
+}
+.disabled{
+    background-color: #bdd1ee;
+    color:#ffffff;
+}
+.hollow{
+    background-color:#ffffff;
+    color:#7e99f3;
+    border:solid 6px #84a0db;
+    width:auto;
+    padding:0px 8%;
+    margin:2% 1% 0% 1%;
+    opacity: 0.3;
+}
+.hollow-clicked{
+    opacity:1;
+}
+.input-text{
+        height: 50px;
+        font-size: 16px;
+        font-weight: bold;
+        border-bottom: solid 1px #84a0db;
+        color: #8dacf5;
+        padding-left: 30px;
+        margin-bottom: 0%;
+        padding-top: 20px !important;
+}
+.input-text::placeholder{
+    color:$color-blue;
+}
+.body-container{
+    height: 100%; 
+    width: 100%;
+    margin:auto;
+}
+.roles-parent{
+    display: flex;
+    margin-top: 5%;
+    justify-content: center;
+}
+.font-adjust{
+    font-size: 16px;
+    font-weight: bolder;
+    color:$color-blue;
+}
+.color-blue{
+    color:$color-blue;
+}
+.logo{
+    height: 100px;
+    width: 100px;
+    display: inherit;
+    position: inherit;
+    margin:auto;
+}
+.white-text{
+    color:#ffffff;
+    font-size:12px;
+    text-align: center;
+}
+.padR15cent{
+    padding-right: 15%;
+}
+.padL100cent{
+    padding-left: 100%;
+}
+.body-container .homepage{
+    background-color:#cbcbcb;
+}
+.body-container .homepage .homepage-logo{
+    padding: 20% 0% 0% 0%;
+
+}
+.body-container .homepage .sign-up-email
+{
+    margin: 20% 10% 5% 10%;
+}
+.body-container .homepage .log-in{
+    margin: 12% 10%;
+}
+.body-container .homepage .disclamer{
+    padding: 10% 20%;
+    bottom:0px;
+}
+
+.body-container .signup .signup-logo
+{
+    padding: 15% 0% 0% 0%;
+}
+.body-container .login .login-logo{
+    padding: 20% 0% 5% 0%;
+}
+
+.body-container .signup .sign-up-form,
+.body-container .login .login-form{
+    margin: 2% 10%;
+}
+.body-container .signup .sign-up,
+.body-container .login .log-in{
+    padding: 5% 10% 5% 10%;
+
+}
+.body-container .pages .header{
+    margin: 5% 10% 5% 10%;
+    font-size:70px;
+    font-weight: bolder;
+    text-align: center;
+    color:$color-blue;
+}
+.body-container .pages .sub-header{
+    margin: 5% 10% 5% 10%;
+    font-size:30px;
+    text-align: center;
+    color:$color-blue;
+}
+.body-container .pages .label-header{
+    margin: 5% 10% 5% 10%;
+    font-size:50px;
+    text-align: center;
+    color:$color-blue;
+    font-weight: bolder;
+}
+.body-container .pages .scatter-button{
+    margin: 10% 10% 0% 10%;
+    text-align: center;
+
+}
+.body-container .pages .see-more{
+    margin: 20% 10% 0% 10%;
+    text-align: center;
+    color:#7e99f3;
+    font-size:40px;
+}
+
+.body-container .pages .createprofile{
+    margin: 20% 10% 0% 10%;
+    text-align: center;
+    color:#7e99f3;
+    font-size:40px;
+    text-decoration: underline;
+    font-weight: bold;
+    text-underline-position: under;
+}
+
+.body-container .pages .search-more{
+    margin: 20% 10% 0% 10%;
+    text-align: center;
+    color:#7e99f3;
+    font-size:40px;
+}
+.body-container .pages .search-icon{
+    margin: -12% 0% 0% 80%;
+}
+.skip{
+    padding: 5% 5% 0% 80%;
+}
+.navigation{
+    padding: 0% 20% 10% 10%;
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+.nav-arrow{
+    font-size: x-large;
+    opacity: 0.7;
+}
+.right-nav{
+    position: absolute;
+    right: 10%;
+    bottom: 20%;
+}
+.left-nav{
+    position: absolute;
+    left: 10%;
+    bottom: 20%;
+}
+.check{
+    font-size: 60px;
+   color:#ffffff;
+   display: none;
+   height: 0px;
+}
+.check>span{
+    position: relative;
+    left: 85%;
+    top: -90px;
+}
+.padT5percent{
+    padding-top: 5%;
+}
+.padT10percent{
+    padding-top: 10%;
+}
+.padT20percent{
+    padding-top: 20%;
+}
+.padT8percent
+{
+    padding-top: 8%;
+}
+.user-logo{
+    text-align: center;
+    font-size: 280px;
+}
+.user-logo .user-logo-border{
+    border: 5px solid;
+    height: 315px;
+}
+.add-button-glyph{
+    text-align: center;
+    font-size: 60px;
+}
+.hobbies-input{
+    margin: 2% 10%;
+}
+.body-container .profile .activate-profile{
+    margin: 12% 10%;
+}
+.body-container .resultSet .view-candidate{
+    margin: 12% 10%;
+}
+.body-container .resultSet .search-result{
+    margin: 5% 35% 20% 35%;
+    height: 250px;
+    display: flex;
+    justify-content: space-around;
+}
+.body-container .resultSet .match-percent{
+    margin: 12% 35%;
+    
+}
+.search-result-button{
+    height: 150%;
+    width: 80%;
+    border-radius: 130px;
+}
+.match-percent-button{
+    height: 70%;
+    width: 145%;
+    border-radius: 130px;
+    background-color: #84a0db;
+}
+.body-container .searchResult .candidate-result{
+    margin: 2% 5% 0% 5%;
+    
+}
+.body-container .searchResult .percentage-input,.body-container .searchResult .update-search-btn{
+    margin: 1% 10% 5% 10%;
+}
+.search-profile-info .search-name-button .label-header{
+    text-align: left;
+    padding-top: 10%;
+    font-size: 40px;
+}
+.search-profile-info .search-name-button .button{
+    height: 70px;
+    width: 350px;
+}
+.body-container .searchResult .search-profile-info
+{
+    display:flex;
+    margin: 5% 5%;
+    height: 250px;
+}
+.search-result-user-logo{
+    text-align: center;
+    font-size: 190px;
+}
+.search-result-user-logo .search-result-user-logo-border{
+    border: 5px solid;
+    height: 215px;
+}
+.search-profile-info .search-name-button{
+    display:flex;
+    flex-direction:column;
+    width: 55%;
+}
+.contact-candidate-button{
+    margin: 15% 10% 0% 10%;
+}
+.instant-search .button{
+    font-size: 35px;
+    height: 90px;
+}
+.instant-search .filter-navigation{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 9%;
+}s
+.instant-search .filter-hide{
+    border: 3px solid $color-blue;
+    padding: 1% 5%;
+    border-radius: 20px;
+}
