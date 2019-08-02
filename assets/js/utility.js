@@ -70,7 +70,8 @@ $( document ).ready(function() {
     }
     $('body,html').show()
     intialStorage();
-
+    getDateTime();
+    setInterval(getDateTime, 1000); 
     //sign up button enable on click of roles button
     $('.roles').click(function(){
         $('.check').hide();
@@ -338,6 +339,9 @@ function searchCandidate(loggedinuser){
     setStorage('searchResult', getSearchResultFromCache)
 }
 function showCandidate(from,size){
+    $("html, body").animate({
+        scrollTop: 0
+    }, 0);
     $('.search-list').empty()
     
     _.each(searchCandidateList.slice(from,from+size),function(obj){
@@ -410,5 +414,22 @@ function populateUserProfile(){
     _.each(allKeys,function(key){
         $('.profile>.'+key).empty()
         $('.profile>.'+key).append(loggedInUser[key].length>0? loggedInUser[key].join(', '):'N/A')
+    })
+}
+
+function getDateTime() {
+    var newDate = new Date();
+    var hour = newDate.getHours()<10?"0"+newDate.getHours():newDate.getHours();
+    var mins = newDate.getMinutes()<10?"0"+newDate.getMinutes():newDate.getMinutes();
+    var month = (newDate.getMonth()+1)<10?"0"+(newDate.getMonth()+1):(newDate.getMonth()+1);
+    var date = newDate.getDate()<10?"0"+newDate.getDate():newDate.getDate();
+    var year = newDate.getFullYear();
+    var time = hour+":"+mins;
+    var date = month+"/"+ date+"/"+year;
+    _.each($('.top-banner>.date'),function(obj){
+        $(obj).text(date);
+    })
+    _.each($('.top-banner>.time'),function(obj){
+        $(obj).text(time);
     })
 }

@@ -2,8 +2,9 @@ html,body{
     margin: 0 auto;
     font-size: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:#8dacf5;
+    color:#2452bf;
     display: none;
+    background-color: #cedcfd;
 }
 .center-div{
     display:flex;
@@ -39,12 +40,12 @@ html,body{
 }
 .hollow{
     background-color:#ffffff;
-    color:#7e99f3;
+    color:#2452bf;
     border:solid 6px #84a0db;
     width:auto;
     padding:10px 8%;
     margin:2% 1% 0% 1%;
-    opacity: 0.3;
+    opacity: 0.6;
 }
 .hollow-clicked{
     opacity:1;
@@ -56,7 +57,7 @@ html,body{
     font-weight: bold;
     border:solid 5px #84a0db;
     border-radius:15px;
-    color:#8dacf5;
+    color:#2452bf;
     padding-left:30px;
     margin-bottom:2%;
 }
@@ -69,8 +70,8 @@ html,body{
     margin:auto;
 }
 .logo{
-    height: 300px;
-    width: 300px;
+    height: 500px;
+    width: 500px;
     display: inherit;
     position: inherit;
     margin:auto;
@@ -93,12 +94,12 @@ html,body{
     width: 100%;
 }
 .body-container .homepage .homepage-logo{
-    padding: 20% 0% 10% 0%;
+    padding: 10% 0% 10% 0%;
 
 }
 .body-container .homepage .sign-up-email
 {
-    margin: 20% 10% 5% 10%;
+    margin: 0% 10% 5% 10%;
 }
 .body-container .homepage .log-in{
     margin: 12% 10%;
@@ -112,7 +113,7 @@ html,body{
     padding: 10% 0% 5% 0%;
 }
 .body-container .login .login-logo{
-    padding: 20% 0% 5% 0%;
+    padding: 10% 0% 5% 0%;
 }
 .body-container .signup .client{
     margin: 8% 10% 3% 10%;
@@ -136,19 +137,18 @@ html,body{
     font-size:70px;
     font-weight: bolder;
     text-align: center;
-    color:#8dacf5;
 }
 .body-container .pages .sub-header{
-    margin: 5% 10% 5% 10%;
-    font-size:30px;
+    margin: 5% 10% 0% 10%;
+    font-size:35px;
     text-align: center;
-    color:#8dacf5;
+    /* color:#8dacf5; */
 }
 .body-container .pages .label-header{
-    margin: 5% 10% 5% 10%;
+    margin: 2% 10% 5% 10%;
     font-size:50px;
     text-align: center;
-    color:#8dacf5;
+    /* color:#8dacf5; */
     font-weight: bolder;
 }
 .body-container .pages .scatter-button{
@@ -166,7 +166,7 @@ html,body{
 .body-container .pages .createprofile{
     margin: 20% 10% 0% 10%;
     text-align: center;
-    color:#7e99f3;
+    /* color:#7e99f3; */
     font-size:40px;
     text-decoration: underline;
     font-weight: bold;
@@ -186,6 +186,7 @@ html,body{
     padding: 5% 10% 0% 10%;
     justify-content: space-between;
     display: flex;
+    font-weight: bold;
 }
 .navigation{
     padding: 10% 20% 10% 10%;
@@ -193,6 +194,7 @@ html,body{
     position: relative;
     width: 100%;
     margin-bottom: 3%;
+    font-weight:bold;
 }
 .right-nav{
     position: absolute;
@@ -310,7 +312,7 @@ html,body{
 }
 .instant-search .button{
     font-size: 35px;
-    height: 90px;
+    min-height: 90px;
 }
 .instant-search .filter-navigation{
     display: flex;
@@ -318,16 +320,19 @@ html,body{
     margin-bottom: 9%;
 }
 .instant-search .filter-hide{
-    border: 3px solid #8dacf5;
+    border: 3px solid #859fdb;
     padding: 1% 5%;
     border-radius: 20px;
+    background-color: white;
+    border-radius: 20px;
+    font-weight: bolder;
 }
 .top-banner{
     display: flex;
     justify-content: space-between;
     padding: 5%;
     font-size: 34px;
-    background-color: #8dacf5;
+    background-color: #697fcd;
     color: #ffffff;
    /*background-image: linear-gradient(180deg, #8dacf5, #cbcbcb); */
 }
