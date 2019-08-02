@@ -13,6 +13,11 @@
     <body>
     <div class="body-container">
         <div class="pages homepage"  >
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>
             <div class="homepage-logo">
                 <img alt="app-logo" class="logo" src="./assets/images/logo.png"/>
             </div>
@@ -33,6 +38,11 @@
             </div>
         </div>
         <div class="pages signup" style="display:none" >
+         <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>
          <div class="signup-logo">
                 <img  alt="app-logo" class="logo" src="./assets/images/logo.png"/>
             </div>
@@ -55,11 +65,17 @@
             </div>
             <div class="navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick="togglepage('.pages.signup','.pages.homepage')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick="togglepage('.pages.signup','.pages.homepage')"></span>-->
+                    <span onclick="togglepage('.pages.signup','.pages.homepage')">Previous</span>
                 </div>
             </div>
         </div>
         <div class="pages login" style="display:none"  >
+         <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>
          <div class="login-logo">
                 <img  alt="app-logo" class="logo" src="./assets/images/logo.png"/>
             </div>
@@ -72,17 +88,25 @@
             </div>
             <div class="navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick=" togglepage('.pages.login','.pages.homepage')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick=" togglepage('.pages.login','.pages.homepage')"></span>-->
+                    <span  onclick=" togglepage('.pages.login','.pages.homepage')">Previous</span>
                 </div>
             </div>
         </div>
         <div class="pages occupation"  style="display:none">
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>
             <div class="skip">
-                <span onclick="togglepage('.pages.occupation','.pages.area')">Skip ></span>
+                <span onclick="togglepage('.pages.occupation','.pages.area')">Skip</span>
+                <span onclick="togglepage('.pages.occupation','.pages.area')">Next</span>
+                
             </div>
             <div class="header for-candidate">What is it you do?</div>
             <div class="header for-client">What is it you're looking for?</div>
-            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="sub-header">The more information you provide, the better your chances of our app matching you to a potential candidate or client, don't sell yourself short, tell us everything!</div> 
             <div class="scatter-button occupation">
                 <div class="occupation">
 
@@ -102,18 +126,25 @@
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('area','occupation')"></span>
                 </div>-->
                 <div class="right-nav ">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.occupation','.pages.area')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.occupation','.pages.area')"></span>-->
+                    <span onclick="togglepage('.pages.occupation','.pages.area')">Next</span>
                 </div>
             </div>
         </div>
         <div class="pages area" style="display:none">
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
             <div class="skip">
-                <span onclick="togglepage('.pages.area','.pages.qualification')">Skip ></span>
+                <span onclick="togglepage('.pages.area','.pages.qualification')">Skip</span>
+                <span  onclick="togglepage('.pages.area','.pages.qualification')">Next</span>
             </div>
             <div class="header for-candidate">In what area primarily</div>
             <div class="header for-client">In which area are you hiring for?</div>
 
-            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="sub-header">The more information you provide, the better your chances of our app matching you to a potential candidate or client, don't sell yourself short, tell us everything!</div> 
             <div class="scatter-button area">
                 <div class="area">
 
@@ -130,21 +161,29 @@
             <div class="createprofile for-candidate update" onclick="updateUser();togglepage('.pages.area','.pages.about')">Update Profile</div>
             <div class="footer navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick="togglepage('.pages.area','.pages.occupation')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  onclick="togglepage('.pages.area','.pages.occupation')"></span>-->
+                    <span  onclick="togglepage('.pages.area','.pages.occupation')">Previous</span>
                 </div>
                 <div class="right-nav">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.area','.pages.qualification')"></span>
+                     <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.area','.pages.qualification')"></span>-->
+                    <span  onclick="togglepage('.pages.area','.pages.qualification')">Next</span>
                 </div>
             </div>
         </div>
         <div class="pages qualification"  style="display:none">
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
             <div class="skip">
-                <span onclick="togglepage('.pages.qualification','.pages.experience')">Skip ></span>
+                <span onclick="togglepage('.pages.qualification','.pages.experience')">Skip</span>
+                <span onclick="togglepage('.pages.qualification','.pages.experience')">Next</span>
             </div>
             <div class="header for-candidate">Your professional qualifications?</div>
             <div class="header for-client">Which qualifications do you require?</div>
 
-            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+             <div class="sub-header">The more information you provide, the better your chances of our app matching you to a potential candidate or client, don't sell yourself short, tell us everything!</div> 
             <div class="scatter-button qualification">
                 <div class="qualification">
 
@@ -161,20 +200,28 @@
             <div class="createprofile for-candidate update" onclick="updateUser();togglepage('.pages.qualification','.pages.about')">Update Profile</div>
             <div class="navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.qualification','.pages.area')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.qualification','.pages.area')"></span>-->
+                    <span onclick="togglepage('.pages.qualification','.pages.area')">Previous</span>
                 </div>
                 <div class="right-nav ">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.qualification','.pages.experience')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.qualification','.pages.experience')"></span>-->
+                    <span onclick="togglepage('.pages.qualification','.pages.experience')">Next</span>
                 </div>
             </div>
         </div>
         <div class="pages experience"  style="display:none">
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
             <div class="skip">
-                <span onclick="togglepage('.pages.experience','.pages.personalAttribute')">Skip ></span>
+                <span onclick="togglepage('.pages.experience','.pages.personalAttribute')">Skip</span>
+                <span onclick="togglepage('.pages.experience','.pages.personalAttribute')">Next</span>
             </div>
             <div class="header for-candidate">And your experience?</div>
             <div class="header for-client">What experience are you looking for?</div>
-            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="sub-header">The more information you provide, the better your chances of our app matching you to a potential candidate or client, don't sell yourself short, tell us everything!</div> 
             <div class="scatter-button experience">
                 <div class="experience">
 
@@ -191,20 +238,28 @@
             <div class="createprofile for-candidate update" onclick="updateUser();togglepage('.pages.experience','.pages.about')">Update Profile</div>
             <div class="navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.experience','.pages.qualification')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.experience','.pages.qualification')"></span>-->
+                    <span onclick="togglepage('.pages.experience','.pages.qualification')">Previous</span>
                 </div>
                 <div class="right-nav ">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.experience','.pages.personalAttribute')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="togglepage('.pages.experience','.pages.personalAttribute')"></span>-->
+                    <span onclick="togglepage('.pages.experience','.pages.personalAttribute')">Next</span>
                 </div>
             </div>
         </div>
         <div class="pages personalAttribute"  style="display:none">
-            <!--<div class="skip">
-                <span onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')">Skip ></span>
-            </div>-->
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
+            <div class="skip">
+                <span class="for-candidate" onclick="updateUser();togglepage('.pages.personalAttribute','.pages.about')">Skip</span>
+                <span class="for-client" onclick="updateUser();togglepage('.pages.personalAttribute','.pages.resultSet')">Skip</span>
+            </div>
             <div class="header for-candidate">What are your personal attributes?</div>
             <div class="header for-client">Which personal attributes are you looking for?</div>
-            <!-- <div class="sub-header">Lorem By proceeding you agree to our By proceeding you agree to ourBy proceeding you agree to our</div> -->
+            <div class="sub-header">The more information you provide, the better your chances of our app matching you to a potential candidate or client, don't sell yourself short, tell us everything!</div> 
             <div class="scatter-button personalAttribute">
                 <div class="personalAttribute">
 
@@ -223,7 +278,8 @@
             <div class="createprofile for-client" onclick="updateUser();togglepage('.pages.personalAttribute','.pages.resultSet')">View Profiles</div>
             <div class="navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.personalAttribute','.pages.experience')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.personalAttribute','.pages.experience')"></span>-->
+                    <span onclick="togglepage('.pages.personalAttribute','.pages.experience')">Previous</span>
                 </div>
                <!--<div class="right-nav ">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('.pages.personalAttribute','.pages.about')"></span>
@@ -231,6 +287,11 @@
             </div>
         </div>
         <div class="pages about"  style="display:none">
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
             <!--<div class="skip">
                 <span onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')">Skip ></span>
             </div>-->
@@ -257,14 +318,21 @@
             </div>
             <div class="navigation">
                  <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.about','.pages.personalAttribute')"></span>
+                   <!-- <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.about','.pages.personalAttribute')"></span>-->
+                    <span onclick="togglepage('.pages.about','.pages.personalAttribute')">Previous</span>
                 </div> 
                <div class="right-nav ">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();populateUserProfile();togglepage('.pages.about','.pages.profile');"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.about','.pages.personalAttribute')"></span>-->
+                    <span onclick="togglepage('.pages.about','.pages.personalAttribute')">Next</span>
                 </div> 
             </div>
         </div>
         <div class="pages profile" style="display:none" >
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
             <!--<div class="skip">
                 <span onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')">Skip ></span>
             </div>-->
@@ -296,7 +364,8 @@
 
             <div class="navigation">
                <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.profile','.pages.about')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.profile','.pages.about')"></span>-->
+                    <span onclick="togglepage('.pages.profile','.pages.about')">Previous</span>
                 </div>
                 <!--<div class="right-nav ">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')"></span>
@@ -304,6 +373,11 @@
             </div>
         </div>
         <div class="pages resultSet" style="display:none">
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
             <!--<div class="skip">
                 <span onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')">Skip ></span>
             </div>-->
@@ -321,7 +395,8 @@
             </div>
             <div class="navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.resultSet','.pages.personalAttribute')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.resultSet','.pages.personalAttribute')"></span>-->
+                    <span onclick="togglepage('.pages.resultSet','.pages.personalAttribute')">Previous</span>
                 </div>
                <!--<div class="right-nav ">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="showCandidate(0,5);togglepage('.pages.resultSet','.pages.searchResult');"></span>
@@ -329,6 +404,11 @@
             </div>
         </div>
         <div class="pages searchResult"  style="display:none">
+            <div class="top-banner" >
+                <span class="time">10:00</span>
+                <span class="app-name" >OPTIMUM</span>
+                <span class="date">04/08/2019</span>
+            </div>        
             <!--<div class="skip">
                 <span onclick="updateUser();togglepage('.pages.personalAttribute','.pages.homepage')">Skip ></span>
             </div>-->
@@ -422,7 +502,8 @@
             </div>
             <div class="navigation">
                 <div class="left-nav">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.searchResult','.pages.resultSet')"></span>
+                    <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" onclick="togglepage('.pages.searchResult','.pages.resultSet')"></span>-->
+                    <span onclick="togglepage('.pages.searchResult','.pages.resultSet')">Previous</span>
                 </div>
                <!--<div class="right-nav ">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" onclick="updateUser();populateUserProfile();togglepage('.pages.about','.pages.profile');"></span>
