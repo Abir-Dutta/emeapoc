@@ -119,7 +119,7 @@ var users =[
         password:'alex',
         role:'candidate',
         disabled:false,
-        occupation:["Midwifery"],
+        occupation:["Midwife"],
         area:["Midwifery"],
         qualification:["Midwifery Cert", "Lactation Consultant"],
         experience:["Newly Qualified"],

@@ -339,6 +339,6 @@ html,body{
 .top-banner .app-name{
     font-size: 55px;
     position: absolute;
-    left: 38.3%;
+    left: calc(50% - 115px);
     top: 2%;
 }
