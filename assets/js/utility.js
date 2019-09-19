@@ -372,7 +372,7 @@ function showCandidateDetails (candidate){
                 <span class="time">10:00</span>
                 <div class="app-name">
                     <div style="height: 210px;"><img src="./assets/images/logo3.png" style="width: 300px;"></div>
-                    <div style="text-align: center;"><span>OPTIMUM</span></div>
+                    <div style="text-align: center;"><span>HireSpace</span></div>
                 </div>
                 <span class="date">04/08/2019</span>
             </div>  
