@@ -91,7 +91,10 @@ $( document ).ready(function() {
     allKeys = Object.keys(allAttributes);
     _.each(allKeys,function(key){
         _.each(allAttributes[key],function(item){
-            $('.scatter-button>.'+key).append('<input class="button hollow" type="button" value="'+item+'" />')
+           if(!Array.isArray(item.name)){
+                $('.scatter-button>.'+key).append('<input class="button hollow" type="button" value="'+item.name+'" />')
+           }
+           
         })
        
     })
@@ -110,9 +113,30 @@ $( document ).ready(function() {
     //  });
 
     _.each(allKeys,function(key){
+        
         $('.scatter-button.'+key).click(function(e){
             if(e.target.value){
+                if(key=='occupation'){
+                    var selectedOcc = _.first(_.filter(allAttributes[key],function(obj){ return obj.name == e.target.value}));
+                        $('.scatter-button>.qualification').empty();
+                        $('.scatter-button>.area').empty();
+                        loggedInUser['qualification'] = allUserAttributes['scatter_element_qualification']=[];
+                        loggedInUser['area'] = allUserAttributes['scatter_element_area']=[];
+                        loggedInUser['occupation'] = allUserAttributes['scatter_element_occupation']=[];
+                        $('.scatter-button>.occupation>input.hollow-clicked').removeClass('hollow-clicked');
+                    var selectedQualification =_.first(_.filter(allAttributes['qualification'],function(obj){ return obj.id == selectedOcc.id}));
+                    _.each(selectedQualification.name,function(item){
+                             $('.scatter-button>.qualification').append('<input class="button hollow" type="button" value="'+item.name+'" />')
+                     })
+                     var selectedArea =_.first(_.filter(allAttributes['area'],function(obj){ return obj.id == selectedOcc.id}));
+                    _.each(selectedArea.name,function(item){
+                       
+                             $('.scatter-button>.area').append('<input class="button hollow" type="button" value="'+item.name+'" />')
+                     })
+                }
+                
                 var statter_elementidx = allUserAttributes['scatter_element_'+key].indexOf(e.target.value)
+
                 if(statter_elementidx==-1){
                     allUserAttributes['scatter_element_'+key].push(e.target.value);
                     $(e.target).addClass('hollow-clicked')
@@ -123,6 +147,7 @@ $( document ).ready(function() {
                 }
             }
          });
+
     })
     $('.percentage-input>input').on('keyup',function(){
         if ($(this).val() > 100)
@@ -130,7 +155,7 @@ $( document ).ready(function() {
             $(this).val($(this).val().slice(0,2))
         }
     });
-    toggleElement('.instant-search input, .instant-search .instant-search-control');
+    $('.instant-search input, .instant-search .instant-search-control').hide();
   });
 function setAttributes(loggedinuser){
      $.each($('.scatter-button').find('input'),function(idx1,obj1){
@@ -158,6 +183,25 @@ function setAttributes(loggedinuser){
             allUserAttributes['scatter_element_'+key] = loggedinuser[key];
 
             $.each(loggedinuser[key],function(occidx,occobj){
+                var savedOccupation =  $('.scatter-button>.occupation>input.hollow-clicked').val();
+                var selectedOcc = _.first(_.filter(allAttributes['occupation'],function(obj){ return obj.name == savedOccupation}));
+
+                if(key == 'area'){
+                    $('.scatter-button>.area').empty();
+                     var selectedArea =_.first(_.filter(allAttributes['area'],function(obj){ return obj.id == selectedOcc.id}));
+                    _.each(selectedArea.name,function(item){
+                        $('.scatter-button>.area').append('<input class="button hollow" type="button" value="'+item.name+'" />')
+                     })
+                   }
+                   if( key =='qualification'){
+                    $('.scatter-button>.qualification').empty();
+                    var selectedQualification =_.first(_.filter(allAttributes['qualification'],function(obj){ return obj.id == selectedOcc.id}));
+                    _.each(selectedQualification.name,function(item){
+                        $('.scatter-button>.qualification').append('<input class="button hollow" type="button" value="'+item.name+'" />')
+                     })
+                   }
+            });
+            $.each(loggedinuser[key],function(occidx,occobj){
                 $.each($('.scatter-button.'+key).find('input'),function(idx1,obj1){
                     if($(obj1).val() == occobj){
                         $(obj1).addClass('hollow-clicked')
@@ -165,6 +209,7 @@ function setAttributes(loggedinuser){
                 })
                })
            })
+           $('.instant-search input, .instant-search .instant-search-control').hide();
 }
   function checkLogin(){
       if($('#log-email').val()!='' && $('#log-password').val() !=''){
