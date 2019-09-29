@@ -65,6 +65,18 @@ var attributes =
             {id:10,name:"Private Healthcare"}
         ]},
         {id:6,name:[
+            {id:1,name:"Retail"},
+            {id:2,name:"Real Estate"},
+            {id:3,name:"Insurance"},
+            {id:4,name:"Travel"},
+            {id:5,name:"Banking"},
+            {id:6,name:"Pensions"},
+            {id:7,name:"Brokerage"},
+            {id:8,name:"Education"},
+            {id:9,name:"NHS"},
+            {id:10,name:"Private Healthcare"}
+        ]},
+        {id:7,name:[
             {id:1,name:"NHS"},
             {id:2,name:"Private Healthcare"},
             {id:3,name:"Education"},
