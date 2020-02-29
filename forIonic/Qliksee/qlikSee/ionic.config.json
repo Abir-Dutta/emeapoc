@@ -1,0 +1,7 @@
+{
+  "name": "qlikSee",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
