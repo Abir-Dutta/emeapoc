@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
-import { IntroScreenComponent } from  './intro-screen/intro-screen.component';
+import { IntroScreenComponent } from './intro-screen/intro-screen.component';
 
 @NgModule({
   declarations: [
