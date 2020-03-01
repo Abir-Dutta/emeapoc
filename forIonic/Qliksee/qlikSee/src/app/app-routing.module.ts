@@ -10,7 +10,9 @@ const routes: Routes = [
   //   loadChildren: () => import('./splash-screen/splash-screen.component').then(m => m.SplashScreenComponent)
   // },
   { path: '', component: SplashScreenComponent },
-  { path: 'introscreen', component: IntroScreenComponent }
+  { path: 'introscreen', component: IntroScreenComponent },
+  { path: 'session', loadChildren: './sign-in-up/sign-in-up.module#SignInUpModule' },
+
 ];
 @NgModule({
   imports: [

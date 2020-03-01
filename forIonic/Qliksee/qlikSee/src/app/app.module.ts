@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { IntroScreenComponent } from './intro-screen/intro-screen.component';
 
+import { SignInUpModule } from './sign-in-up/sign-in-up.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,7 @@ import { IntroScreenComponent } from './intro-screen/intro-screen.component';
      IntroScreenComponent
     ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SignInUpModule],
   providers: [
     StatusBar,
     SplashScreen,

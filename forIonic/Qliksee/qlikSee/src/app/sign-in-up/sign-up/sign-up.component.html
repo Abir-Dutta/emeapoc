@@ -1,0 +1,31 @@
+<div class="tab-spacing">
+  <div class="center-div">
+    <div class="width80Cent">
+        <ion-input  placeholder="Name" required type="text" class="default-input"></ion-input>
+    </div>
+    <div class="width80Cent marT20">
+      <ion-input  placeholder="Email" required type="text" class="default-input"></ion-input>
+    </div>
+    <div class="width80Cent marT20">
+      <ion-input  placeholder="Password" required type="password" class="default-input"  *ngIf="!showPasswordText" [(ngModel)]="password" ></ion-input>
+      <ion-input  placeholder="Password" required type="text" class="default-input"  *ngIf="showPasswordText" [(ngModel)]="password"></ion-input>
+      <ion-item (click)="showPasswordText = !showPasswordText" *ngIf="password" class="password-hide">
+        <ion-icon class="icon" name="eye-outline" *ngIf="!showPasswordText"></ion-icon>
+        <ion-icon class="icon" name="eye-off-outline" *ngIf="showPasswordText"></ion-icon>
+      </ion-item>
+  </div>
+    <ion-button class="default-button marT40 width60Cent">Create my account</ion-button>
+    <div class="margin-0-auto text-small" >or sign up with</div>
+    <div class="social-div marT30">
+      <div>
+        <ion-icon name="logo-facebook" class="icon"></ion-icon>
+      </div>
+      <div>
+        <ion-icon name="logo-twitter" class="icon"></ion-icon>
+      </div>
+      <div>
+        <ion-icon name="logo-google" class="icon"></ion-icon>
+      </div>
+    </div>
+  </div>
+</div>
