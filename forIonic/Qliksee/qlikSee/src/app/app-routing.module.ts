@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: '', component: SplashScreenComponent },
   { path: 'introscreen', component: IntroScreenComponent },
   { path: 'session', loadChildren: './sign-in-up/sign-in-up.module#SignInUpModule' },
+  { path: 'search', loadChildren: './onbording/onbording.module#OnbordingModule' },
 
 ];
 @NgModule({

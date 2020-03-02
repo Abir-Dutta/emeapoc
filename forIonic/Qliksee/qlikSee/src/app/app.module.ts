@@ -13,6 +13,7 @@ import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { IntroScreenComponent } from './intro-screen/intro-screen.component';
 
 import { SignInUpModule } from './sign-in-up/sign-in-up.module';
+import { OnbordingModule } from './onbording/onbording.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,13 @@ import { SignInUpModule } from './sign-in-up/sign-in-up.module';
      IntroScreenComponent
     ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SignInUpModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    SignInUpModule,
+    OnbordingModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
