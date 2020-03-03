@@ -1,0 +1,21 @@
+.search-chips{
+    text-transform: none;
+    --background: transparent;
+    background: transparent;
+    --color: #4e4e4e;
+    border: 1px solid;
+    border-radius: 15px;
+    --border-radius: 15px;
+}
+
+.nav-button{
+    height: 60px;
+    width: 60px;
+    --border-color: #4e4e4e;
+}
+.create-button{
+    padding: 0px 40px;
+    --background: #4e4e4e;
+    --padding-end: 40px;
+    --padding-start: 40px;
+}
