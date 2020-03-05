@@ -91,6 +91,7 @@
   }
   .searchbar-input{
     border-radius: 15px !important;
+    border: 1px solid  #4e4e4e !important;
   }
   .search-chips-tray{
     text-align: center;
@@ -120,7 +121,7 @@
   .nav-button{
     height: 60px;
     width: 60px;
-    border: 2px solid #4e4e4e;
+    border: 2px solid rgba(78,78,78,0.7);
     border-radius: 50%;
     background-color: transparent;
     box-shadow: 0px 3px 4px 0px rgba(78,78,78,0.4);
