@@ -55,6 +55,9 @@
     justify-content: center;
     height: 100%;
   }
+  .not-justify{
+    justify-content: unset;
+  }
   .margin-0-auto{
     margin: 0 auto;
   }
@@ -72,6 +75,74 @@
   .tab-spacing{
     position: relative;
     top: 10%;
+  }
+  .header-description{
+    text-align: center;
+    padding-top: 15px;    
+    font-size: 14px;
+  }
+  .top-search-light{
+    padding: 15px 0px;
+    color: rgba(135,135,135,0.5);
+    font-size: 18px;
+  }
+  .searchbar-input-tray{
+    width: 100%;
+  }
+  .searchbar-input{
+    border-radius: 15px !important;
+  }
+  .search-chips-tray{
+    text-align: center;
+  }
+  .search-chips{
+    text-transform: none;
+    --background: transparent;
+    background: transparent;
+    --color: #4e4e4e;
+    border: 1px solid;
+    border-radius: 15px;
+    --border-radius: 15px;
+    box-shadow: 0px 3px 4px 0px rgba(78,78,78,0.4);
+  }
+  .search-chip-selected{
+    --background: rgba(229,25,76);
+    color: white;
+  }
+  .nav-button-tray{
+    position: absolute;  
+    bottom: 75px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .nav-button{
+    height: 60px;
+    width: 60px;
+    border: 2px solid #4e4e4e;
+    border-radius: 50%;
+    background-color: transparent;
+    box-shadow: 0px 3px 4px 0px rgba(78,78,78,0.4);
+    
+  }
+  .nav-button-icon{
+    font-size: 40px;
+    color: #e5174c;
+  }
+  .create-button-tray{
+    position: absolute;  
+    bottom: 15px;
+  }
+  .create-button{
+    --background: #4e4e4e;
+    --padding-end: 40px;
+    --padding-start: 40px;
+    box-shadow: 0px 3px 4px 0px rgba(78,78,78,0.4);
+    background: transparent;
+    border-radius: 20px;
+    text-transform: none;
+  
   }
   // label
   .text-large{
@@ -102,7 +173,7 @@
   // button-designs
   .default-button{
     text-transform: none;
-    --background: rgba(229,25,76) ;
+    --background: #e5174c ;
     --border-radius: 20px;
     border: 1px solid white;
     border-radius: 20px;
@@ -116,11 +187,28 @@
   .borderRadius20{
     --border-radius: 20px;
   }
-
+  .borderRadius15{
+    border-radius: 15px;
+  }
 
   //Paddings
-
-
+  .padR5{
+    padding-right: 5px;
+  }
+  .padL5{
+    padding-left: 5px;
+  }
+  .padLR18{
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .padLR0{
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .padT40px{
+    padding-top: 40px;
+  }
   // Margins
   .marT10 {
     margin-top: 10px;
@@ -137,7 +225,9 @@
   .marT-50 {
     margin-top: -50px;
   }
-
+  .marT10Cent {
+    margin-top: 10%;
+  }
   .marT30Cent {
     margin-top: 30%;
   }
