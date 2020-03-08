@@ -1,0 +1,30 @@
+<div class="center-div padLR18 padLR0 not-justify">
+  <h2 class="marT40">In which sector(s)?</h2>
+  <div class="header-description">
+    
+  </div>
+  <div class="marT30">
+    <ion-searchbar class="borderRadius15" showCancelButton="focus"></ion-searchbar>
+  </div>
+  <div class="top-search-light">
+    Top searches
+  </div>
+  <div class="search-chips-tray" > 
+    <ion-button *ngFor="let search of searchChip; let i = index" class="search-chips"
+    [ngClass]="{'search-chip-selected': search.isSelected}"
+    id="search_{{i}}" (click)="search.isSelected=!search.isSelected">
+      {{search.value}}
+    </ion-button>
+  </div>
+  <div  class="nav-button-tray">
+    <button class="nav-button">
+      <ion-icon class="nav-button-icon" name="chevron-back-outline" (click)="navigateSearch(previousSearchPath)"></ion-icon>
+    </button>
+    <button class="nav-button">
+      <ion-icon class="nav-button-icon" name="chevron-forward-outline" (click)="navigateSearch(nextSearchPath)"></ion-icon>
+    </button>
+  </div>
+  <div class="create-button-tray"> 
+    <app-profile-button></app-profile-button>
+  </div>
+</div>

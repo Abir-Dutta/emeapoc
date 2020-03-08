@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Host } from '@angular/core';
+import { OnboardingComponent } from '../onboarding/onboarding.component';
+import { PATH } from '../constants';
 
 @Component({
   selector: 'app-intro-screen',
@@ -6,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./intro-screen.component.css'],
 })
 export class IntroScreenComponent implements OnInit {
+  signUpPath = PATH.SIGN_UP;
+  signInPath = PATH.SIGN_IN;
 
-  constructor() { }
+  onboarding = null;
+
+  constructor(@Host() onboardingComponent: OnboardingComponent) {
+    this.onboarding = onboardingComponent;
+   }
 
   ngOnInit() {}
+  navigateSearch(searchPath: string) {
+    this.onboarding.navigateSearch(searchPath);
+  }
+
 
 }

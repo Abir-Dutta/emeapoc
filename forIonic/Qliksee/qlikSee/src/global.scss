@@ -25,7 +25,10 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
+h2{
+  text-align: center;
+  font-size:20px;
+}
 .splash-background{
     --background: linear-gradient(180deg, rgba(0,0,15,0.8) 50%, rgba(0,0,15,0.8) 50%), url(./assets/background.jpg) no-repeat 50% 45% fixed;
     background-size: cover;
@@ -231,4 +234,32 @@
   }
   .marT30Cent {
     margin-top: 30%;
+  }
+
+  .custom-alert{
+    .alert-wrapper {
+      border-radius: 15px  !important;
+      --color: #000000   !important;
+      color: #000000   !important;
+      padding: 20px 8px !important;
+    }
+    .alert-head{
+        font-weight: bold !important;
+    }
+    .alert-message{
+        text-align: center  !important;
+      font-size: 14px !important;
+    }
+    .alert-button-group {
+      display: flex;
+      justify-content: space-evenly;
+      .alert-button {
+        background: #4e4e4e;
+        color: white;
+        border-radius: 15px;
+        padding: 0px 30px;
+        height: 35px;
+        text-transform: unset;
+      }
+    }
   }
