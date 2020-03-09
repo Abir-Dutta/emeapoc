@@ -1,6 +1,6 @@
 import { Component, OnInit, Host } from '@angular/core';
 import { PATH } from 'src/app/constants';
-import { OnboardingComponent } from '../onboarding.component';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-sector',
@@ -11,8 +11,8 @@ export class SectorComponent implements OnInit {
 
   previousSearchPath = PATH.SEARCH_JOB;
   nextSearchPath = PATH.SEARCH_QUALIFICATION;
-
-private searchChip = [
+  searchText: string;
+  searchChip = [
     {
       value: 'Retial',
       isSelected: false
@@ -38,15 +38,15 @@ private searchChip = [
       isSelected: false
     }
   ];
-  onboarding = null;
+  appComponent = null;
 
-  constructor(@Host() onboardingComponent: OnboardingComponent) {
-    this.onboarding = onboardingComponent;
+  constructor(@Host() appComponent: AppComponent) {
+    this.appComponent = appComponent;
    }
 
   ngOnInit() {}
   navigateSearch(searchPath: string) {
-    this.onboarding.navigateSearch(searchPath);
+    this.appComponent.navigateSearch(searchPath);
   }
 
 }

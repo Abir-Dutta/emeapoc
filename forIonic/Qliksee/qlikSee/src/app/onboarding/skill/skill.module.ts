@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SkillComponent } from './skill.component';
 import { ProfileButtonModule } from '../common/profile-button/profile-button.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [SkillComponent
@@ -15,6 +16,7 @@ import { ProfileButtonModule } from '../common/profile-button/profile-button.mod
     FormsModule,
     RouterModule.forChild([{ path: '', component: SkillComponent }]),
     ProfileButtonModule,
+    Ng2SearchPipeModule
   ],
   exports: [
     SkillComponent

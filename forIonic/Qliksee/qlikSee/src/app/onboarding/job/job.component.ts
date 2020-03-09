@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Host } from '@angular/core';
 import {PATH} from '../../constants';
-import { OnboardingComponent } from '../onboarding.component';
+import { AppComponent } from 'src/app/app.component';
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
@@ -8,7 +8,8 @@ import { OnboardingComponent } from '../onboarding.component';
 })
 export class JobComponent implements OnInit {
   nextSearchPath = PATH.SEARCH_SECTOR;
-  private searchChip = [
+  searchText: string;
+  searchChip = [
     {
       value: 'Primary',
       isSelected: false
@@ -35,14 +36,15 @@ export class JobComponent implements OnInit {
     }
   ];
 
-  onboarding = null;
+  appComponent = null;
 
-  constructor(@Host() onboardingComponent: OnboardingComponent) {
-    this.onboarding = onboardingComponent;
+  constructor(@Host() appComponent: AppComponent) {
+    this.appComponent = appComponent;
    }
 
   ngOnInit() {}
   navigateSearch(searchPath: string) {
-    this.onboarding.navigateSearch(searchPath);
+    this.appComponent.navigateSearch(searchPath);
   }
+
 }

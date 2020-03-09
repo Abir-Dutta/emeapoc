@@ -4,7 +4,6 @@ import { ProfileButtonComponent } from './profile-button.component';
 import { IonicModule } from '@ionic/angular';
 
 
-
 @NgModule({
   declarations: [ProfileButtonComponent],
   imports: [

@@ -4,13 +4,13 @@
     
   </div>
   <div class="marT30">
-    <ion-searchbar class="borderRadius15" showCancelButton="focus"></ion-searchbar>
+    <ion-searchbar class="borderRadius15" showCancelButton="focus" [(ngModel)]="searchText"></ion-searchbar>
   </div>
   <div class="top-search-light">
     Top searches
   </div>
   <div class="search-chips-tray" > 
-    <ion-button *ngFor="let search of searchChip; let i = index" class="search-chips"
+    <ion-button *ngFor="let search of searchChip | filter:searchText; let i = index" class="search-chips"
     [ngClass]="{'search-chip-selected': search.isSelected}"
     id="search_{{i}}" (click)="search.isSelected=!search.isSelected">
       {{search.value}}

@@ -8,12 +8,7 @@ import { Router } from '@angular/router';
 })
 export class OnboardingComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {}
-
-  public navigateSearch(routePath) {
-    this.router.navigate([routePath]);
-  }
-
 }

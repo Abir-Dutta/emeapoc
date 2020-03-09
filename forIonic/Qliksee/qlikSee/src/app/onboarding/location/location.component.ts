@@ -1,6 +1,6 @@
 import { Component, OnInit, Host } from '@angular/core';
 import { PATH } from 'src/app/constants';
-import { OnboardingComponent } from '../onboarding.component';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-location',
@@ -11,7 +11,8 @@ export class LocationComponent implements OnInit {
 
 
   previousSearchPath = PATH.SEARCH_SKILL;
-  private searchChip = [
+  searchText: string;
+  searchChip = [
     {
       value: 'Primary',
       isSelected: false
@@ -37,14 +38,15 @@ export class LocationComponent implements OnInit {
       isSelected: false
     }
   ];
-  onboarding = null;
+  appComponent = null;
 
-  constructor(@Host() onboardingComponent: OnboardingComponent) {
-    this.onboarding = onboardingComponent;
+  constructor(@Host() appComponent: AppComponent) {
+    this.appComponent = appComponent;
    }
 
   ngOnInit() {}
   navigateSearch(searchPath: string) {
-    this.onboarding.navigateSearch(searchPath);
+    this.appComponent.navigateSearch(searchPath);
   }
+
 }
